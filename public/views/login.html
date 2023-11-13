@@ -1,21 +1,62 @@
 <!DOCTYPE html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
     <title>LOGIN PAGE</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="logo">
-            <img src="public/img/logo.png">
+        <div class="left">
+            <div class="logo">
+                <img src="../img/logo.svg">
+            </div>
+            <div class="welcome-message">
+                Welcome  back!</br>
+                Please login/Signup to your account.
+            </div>
+            <div class="login-container">
+                <form class="login">
+                    
+                    <input name="email"  type="text" placeholder="Example@email.com"></br>
+                    <input name="password" type="password" placeholder="Password"></br>
+                    <input type="checkbox" id="remember-me" name="remember-me" value="Remember Me">
+                    <label for="remember-me">Remember Me</label>
+                    <a href="../views/main.html">Forgot Password?</a></br>
+                    <button id="login-button">Login</button>
+                    <button id="sign-up-button">Sign up</button>
+                </form>
+                <div class="alt-login">
+                    <div class="or-login-with">
+                        Or login with
+                    </div>
+                    <div class="facebook">
+                        <a href="../views/main.html">Facebook</a>
+                    </div>
+                    <div class="google">
+                        <a href="../views/main.html">Google</a>
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
         </div>
-        <div class="login-container">
-            <form class="login">
-                <input name="email" type="text" placeholder="email@email.com">
-                <input name="password" type="password" placeholder="password">
-                <button>LOGIN</button>
-            </form>
+        <div class="right">
+            <div class="image">
+                <img src="../img/people2.svg">
+            </div>
+            <div class="go-back-button">
+                <a href="../views/main.html">Go back</a>
+            </div>
+            
         </div>
+        
     </div>
 </body>
