@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/login.css">
-    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../css/register.css">
+    <title>Register</title>
     <link rel="shortcut icon" type="image/x-icon" href="../img/small-logo.png" />
 </head>
 
@@ -19,18 +19,17 @@
                 <a href="../views/main.html" ><img src="../img/logo.svg"></a>
             </div>
             <div class="welcome-message">
-                Welcome  back!</br>
-                Please login/Signup to your account.
+                Welcome!</br>
+                Kindly fill in this form to register.
             </div>
             <div class="login-container">
                 <form class="login">
-                    <input name="email"  type="text" placeholder="Email"></br>
-                    <input name="password" type="password" placeholder="Password"></br>
-                    <input type="checkbox" id="remember-me" name="remember-me" value="Remember Me">
-                    <label for="remember-me">Remember Me</label>
-                    <a href="../views/main.html">Forgot Password?</a></br>
-                    <button id="login-button">Login</button>
-                    <button id="sign-up-button">Sign up</button> 
+                    <input id="username" name="username"  type="text" placeholder="Username"></br>
+                    <input id="email" name="email"  type="text" placeholder="Email"></br>
+                    <input id="password" name="password" type="password" placeholder="Create Password"></br>
+                    <input id="confirm-password" name="password" type="password" placeholder="Confirm Password"></br>
+                    <div class="already-have"> Already have an account?<a href="../views/main.html">Login</a></div>
+                    <button  id="sign-up-button">Sign up</button>
                 </form>
                 <div class="alt-login">
                     <div class="or-login-with">
