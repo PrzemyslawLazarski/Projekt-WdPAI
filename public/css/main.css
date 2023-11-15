@@ -146,7 +146,6 @@ body{
 {
     display: block;
     padding: 2vh;
-    background-color: #3498db;
     color:#FFFFFF;
     text-decoration: none;
     background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
@@ -181,4 +180,67 @@ body{
     margin-top: 2vh;
 }
 
+@media only screen and (max-device-width: 1020px) {
 
+.image img 
+{
+    display:none;
+}
+.motto
+{
+    display:none;
+}
+.bar-buttons
+{
+    display:none;
+}
+.login-button
+{
+    display: none;
+}
+.separator
+{
+    display: none;
+}
+.container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo > a > img
+{
+width:100vw;
+margin-top: 8vh;
+}
+.lower-motto
+{
+    display: block;
+    width:100vw;
+    margin-top:15vh;
+    font-size: 4vw;
+    text-align: center;
+}
+.start-bar
+{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.start-button
+{
+    width:40vw;
+    font-size: 4vw;
+    text-align: center;
+    margin-top: 23vh;
+}
+.knowmore-button
+{
+    font-size: 3vw;
+}
+.smaller-image > img
+{
+    width:100vw;
+
+}
+}
