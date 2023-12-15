@@ -7,16 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/register.css">
+    <link rel="stylesheet" type="text/css" href="public/css/register.css">
     <title>Register</title>
-    <link rel="shortcut icon" type="image/x-icon" href="../img/small-logo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
 </head>
 
 <body>
     <div class="container">
         <div class="left">
             <div class="logo">
-                <a href="../views/main.html" ><img src="../img/logo.svg"></a>
+                <a href="main" ><img src="public/img/logo.svg"></a>
             </div>
             <div class="welcome-message">
                 Welcome!</br>
@@ -28,7 +28,7 @@
                     <input id="email" name="email"  type="text" placeholder="Email"></br>
                     <input id="password" name="password" type="password" placeholder="Create Password"></br>
                     <input id="confirm-password" name="password" type="password" placeholder="Confirm Password"></br>
-                    <div class="already-have"> Already have an account?<a href="../views/main.html">Login</a></div>
+                    <div class="already-have"> Already have an account?<a href="login">Login</a></div>
                     <button  id="sign-up-button">Sign up</button>
                 </form>
                 <div class="alt-login">
@@ -36,10 +36,10 @@
                         Or login with
                     </div>
                     <div class="facebook">
-                        <a href="../views/main.html">Facebook</a>
+                        <a href="main">Facebook</a>
                     </div>
                     <div class="google">
-                        <a href="../views/main.html">Google</a>
+                        <a href="main">Google</a>
                     </div>
                     
                     
@@ -49,10 +49,10 @@
         </div>
         <div class="right">
             <div class="image">
-                <img src="../img/people2.svg">
+                <img src="public/img/people2.svg">
             </div>
             <div class="go-back-button">
-                <a href="../views/main.html">Go back</a>
+                <a href="main">Go back</a>
             </div>
             
         </div>

@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="public/css/main.css">
     <title>Main</title>
-    <link rel="shortcut icon" type="image/x-icon" href="../img/small-logo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
 </head>
 
 <body>
@@ -18,16 +18,16 @@
         <div class="header">
             <div class="bar">
                 <div class="logo">
-                    <a href="../views/main.html"><img src="../img/logo.svg"></a>
+                    <a href="main"><img src="public/img/logo.svg"></a>
                 </div>
                 <div class="bar-buttons">
-                    <a href="../views/how-it-works.html">How it works?</a>
-                    <a href="../views/about-us.html">About Us</a>
-                    <a href="../views/features.html">Features</a>
+                    <a href="howitworks">How it works?</a>
+                    <a href="aboutus">About Us</a>
+                    <a href="features">Features</a>
                 </div>
             </div>
             <div class="login-button">
-                <a href="../views/login.html">Login</a>
+                <a href="login">Login</a>
             </div>
         </div>
         <div class="separator"></div>
@@ -42,19 +42,19 @@
                 </div>
                 <div class="start-bar">
                     <div class="start-button">
-                        <a href="../views/login.html">Start solving</a>
+                        <a href="login">Start solving</a>
                     </div>
                     <div class="knowmore-button">
-                        <a href="../views/how-it-works.html">Know more</a>
+                        <a href="howitworks">Know more</a>
                     </div>
                     
                 </div>
                 <div class="smaller-image">
-                    <img src="../img/smaller-lines.svg" alt="small Image">
+                    <img src="public/img/smaller-lines.svg" alt="small Image">
                 </div>
             </div>
                 <div class="image">
-                    <img src="../img/people1.svg" alt="Large Image">
+                    <img src="public/img/people1.svg" alt="Large Image">
                 </div>
         </div>
         
