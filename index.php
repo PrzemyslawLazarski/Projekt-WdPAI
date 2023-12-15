@@ -13,6 +13,7 @@ Routing::get('features', 'DefaultController');
 Routing::get('register', 'DefaultController');
 Routing::get('howitworks', 'DefaultController');
 Routing::get('quiz', 'DefaultController');
+Routing::get('dashboard', 'DefaultController');
 
 Routing::post('login', 'SecurityController');
 

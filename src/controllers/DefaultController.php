@@ -38,4 +38,9 @@ class DefaultController extends AppController {
     {
         $this->render('quiz');
     }
+
+    public function dashboard()
+    {
+        $this->render('dashboard');
+    }
 }
