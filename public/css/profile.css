@@ -38,7 +38,6 @@ a{
     text-decoration: none;
     color: black;
     font-size: 1.7em;
- 
 }
 a:hover{
 
@@ -64,9 +63,4 @@ padding:2vw;
     margin-bottom: 2vh; /* Odstęp między linią a divem motto */
 
 
-}
-
-.nie:hover
-{
-    display:none;
 }

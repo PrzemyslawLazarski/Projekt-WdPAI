@@ -8,6 +8,10 @@ class DefaultController extends AppController {
     {
         $this->render('login');
     }
+    public function index()
+    {
+        $this->render('main');
+    }
 
     public function aboutus()
     {
@@ -42,5 +46,9 @@ class DefaultController extends AppController {
     public function dashboard()
     {
         $this->render('dashboard');
+    }
+    public function profile()
+    {
+        $this->render('profile');
     }
 }

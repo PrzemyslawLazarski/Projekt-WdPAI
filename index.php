@@ -14,6 +14,7 @@ Routing::get('register', 'DefaultController');
 Routing::get('howitworks', 'DefaultController');
 Routing::get('quiz', 'DefaultController');
 Routing::get('dashboard', 'DefaultController');
+Routing::get('profile', 'DefaultController');
 
 Routing::post('login', 'SecurityController');
 

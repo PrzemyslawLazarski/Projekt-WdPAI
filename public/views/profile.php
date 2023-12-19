@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" type="text/css" href="public/css/dashboard.css">
-    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="public/css/profile.css">
+    <title>Profil</title>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
 </head>
 
@@ -30,12 +30,8 @@
             
         </div>
         <div class="board">
-            Home
+            Profile
             <div class="separator"></div>
-            <a href="public/views/quiz.html">PLAY</a><br>
-            Umówisz sie ze mną?<br>
-            <div class="tak"><a href="#" >TAK </a></div>
-            <div class="nie"><a href="register"> NIE </a></div>
         </div>
             
         
