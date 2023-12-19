@@ -15,7 +15,9 @@ Routing::get('howitworks', 'DefaultController');
 Routing::get('quiz', 'DefaultController');
 Routing::get('dashboard', 'DefaultController');
 Routing::get('profile', 'DefaultController');
+Routing::get('myquizzes', 'DefaultController');
 
 Routing::post('login', 'SecurityController');
+
 
 Routing::run($path);

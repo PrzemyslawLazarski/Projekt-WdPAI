@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" type="text/css" href="public/css/profile.css">
-    <title>Profil</title>
+    <title>My Quizzes</title>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
 </head>
 
@@ -29,9 +29,12 @@
             </div>
             
         </div>
-        <div class="board">
-            Profile
-            <div class="separator"></div>
+        <div class="right">
+            <div class="board">
+                My Quizzes
+                <div class="separator"></div>
+            </div>
+           
         </div>
             
         

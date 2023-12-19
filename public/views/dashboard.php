@@ -22,7 +22,7 @@
             <div class="links">
                 <a href="dashboard">Home</a></br>
                 <a href="profile">Profile</a></br>
-                <a href="#">My Quizzes</a></br>
+                <a href="myquizzes">My Quizzes</a></br>
                 <a href="#">Discover</a></br>
                 <a href="#">Statistics</a></br>
                 <a href="login">Log Out</a>
@@ -33,9 +33,6 @@
             Home
             <div class="separator"></div>
             <a href="public/views/quiz.html">PLAY</a><br>
-            Umówisz sie ze mną?<br>
-            <div class="tak"><a href="#" >TAK </a></div>
-            <div class="nie"><a href="register"> NIE </a></div>
         </div>
             
         
