@@ -9,6 +9,7 @@
 
 body{
     background: #ffffff;
+    font-family: 'Poppins';
 }
 
 .start_btn,
@@ -37,12 +38,23 @@ body{
     color: #FCC822;
     padding: 1vw 2vw;
     outline: none;
-    border: none;
-    border-radius: 0.3vw;
-    background: #fff;
+ 
     cursor: pointer;
+    border: 1px solid #FCC822;
+    transition: all 0.3s ease;
+    color:#FCC822;
+    background: #fff;
+    box-shadow: 0 0.1vw 2.5vh -0.2vw #FBE18F;
 }
 
+
+
+
+.start_btn button:hover{
+    background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
+    color: white;
+    box-shadow: 0px 0.1vw 2.5vh -0.2vw #FBE18F;
+}
 
 
 
@@ -247,10 +259,10 @@ footer button.show{
 
 .result_box{
     background: #fff;
-    border-radius: 5px;
+    border-radius: 0.3vw;
     display: flex;
-    padding: 25px 30px;
-    width: 450px;
+
+    width: 80vw;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -260,65 +272,72 @@ footer button.show{
     transition: all 0.3s ease;
 }
 
+
+    
+
+
 .result_box .icon{
-    font-size: 100px;
-    color: #007bff;
-    margin-bottom: 10px;
+
+    position: relative;
 }
 
 .result_box .complete_text{
-    font-size: 20px;
+    font-size: 2em;
     font-weight: 500;
+    position: absolute; 
+    top: 35%; 
+    left: 50%; 
+    color: rgb(255, 255, 255);
+    transform: translate(-50%, -50%);
+
 }
 
 .result_box .score_text span{
     display: flex;
-    margin: 10px 0;
-    font-size: 18px;
+
+    font-size: 3.2em;
     font-weight: 500;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    color: rgb(255, 255, 255);
+    transform: translate(-50%, -50%);
 }
 
 .result_box .score_text span p{
-    padding: 0 4px;
+
     font-weight: 600;
+    padding: 0 2vh;
 }
 
 .result_box .buttons{
     display: flex;
-    margin: 20px 0;
+    margin: 2vh 0;
 }
 
 .result_box .buttons button{
-    margin: 0 10px;
-    height: 45px;
-    padding: 0 20px;
-    font-size: 18px;
+    margin: 0 1vw;
+    height: 5vh;
+    padding: 0 1.5vw;
+    font-size: 1.2em;
     font-weight: 500;
     cursor: pointer;
     border: none;
     outline: none;
     border-radius: 5px;
-    border: 1px solid #007bff;
+    border: 1px solid #FCC822;
     transition: all 0.3s ease;
-}
-
-.buttons button.restart{
-    color: #fff;
-    background: #007bff;
-}
-
-.buttons button.restart:hover{
-    background: #0263ca;
-}
-
-.buttons button.quit{
-    color: #007bff;
+    color:#FCC822;
     background: #fff;
+    box-shadow: 0 0.1vw 2.5vh -0.2vw #FBE18F;
+    
 }
 
-.buttons button.quit:hover{
-    color: #fff;
-    background: #007bff;
+
+.buttons button:hover{
+    background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
+    color: white;
+    box-shadow: 0px 0.1vw 2.5vh -0.2vw #FBE18F;
 }
 
 

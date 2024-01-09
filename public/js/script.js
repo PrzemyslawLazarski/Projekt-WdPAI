@@ -147,7 +147,7 @@ function showResult(){
     const scoreText = result_box.querySelector(".score_text");
      
         //creating a new span tag and passing the user score number and total question number
-        let scoreTag = '<span>Your score: <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
+        let scoreTag = '<span><p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;  //adding new span tag inside score_Text
     
 }

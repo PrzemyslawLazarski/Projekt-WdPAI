@@ -7,6 +7,7 @@
     <title>Quiz</title>
     <link rel="stylesheet" href="public/css/quiz.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
 
     <script type="text/javascript" src="/public/js/questions.js" defer></script>
     <script type="text/javascript" src="/public/js/script.js" defer></script>
@@ -49,12 +50,13 @@
     <!-- Result Box -->
     <div class="result_box">
         <div class="icon">
-            <i class="fas fa-crown"></i>
-        </div>
-        <div class="complete_text">You've completed the Quiz!</div>
-        <div class="score_text">
+            <img src="public/img/score.svg">
+            <div class="complete_text">Your score:</div>
+            <div class="score_text">
             <!-- Here I've inserted Score Result from JavaScript -->
         </div>
+        </div>
+        
         <div class="buttons">
             <button class="restart">Replay Quiz</button>
             <button class="quit">Complete</button>
