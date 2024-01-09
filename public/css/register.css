@@ -47,7 +47,7 @@ input[type=text] {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    border-bottom: 0;
+ 
 }
 input[type=password]{
     width:36vw;
@@ -69,6 +69,7 @@ input:hover
 }
 .right
 {
+    width:50vw;
     margin-left: 6vw;
     margin-top: 3vh;
     display: flex;
@@ -208,10 +209,7 @@ label
     display: flex;
     flex-direction: row;
 }
-#confirm-password
-{
-    border-top: 0;
-}
+
 #username
 {
     margin-top: 8vh;;

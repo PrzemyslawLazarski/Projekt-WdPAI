@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="public/css/dashboard.css">
     <title>Dashboard</title>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
+
+
 </head>
 
 <body>
@@ -32,7 +34,7 @@
         <div class="board">
             Home
             <div class="separator"></div>
-            <a href="public/views/quiz.html">PLAY</a><br>
+            <a href="quiz">PLAY</a><br>
         </div>
             
         

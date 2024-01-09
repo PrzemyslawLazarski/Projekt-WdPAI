@@ -4,31 +4,25 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins';
 }
 
 body{
-    background: #007bff;
-}
-
-::selection{
-    color: #fff;
-    background: #007bff;
+    background: #ffffff;
 }
 
 .start_btn,
-.info_box,
 .quiz_box,
 .result_box{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
-                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0.2vw 0.4vw 0 rgba(0, 0, 0, 0.2), 
+                0 0.3vw 0.6vw 0 rgba(0, 0, 0, 0.19);
 }
 
-.info_box.activeInfo,
+
 .quiz_box.activeQuiz,
 .result_box.activeResult{
     opacity: 1;
@@ -38,79 +32,24 @@ body{
 }
 
 .start_btn button{
-    font-size: 25px;
-    font-weight: 500;
-    color: #007bff;
-    padding: 15px 30px;
+    font-size: 2em;
+    font-weight: 400;
+    color: #FCC822;
+    padding: 1vw 2vw;
     outline: none;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.3vw;
     background: #fff;
     cursor: pointer;
 }
 
-.info_box{
-    width: 540px;
-    background: #fff;
-    border-radius: 5px;
-    transform: translate(-50%, -50%) scale(0.9);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-}
 
-.info_box .info-title{
-    height: 60px;
-    width: 100%;
-    border-bottom: 1px solid lightgrey;
-    display: flex;
-    align-items: center;
-    padding: 0 30px;
-    border-radius: 5px 5px 0 0;
-    font-size: 20px;
-    font-weight: 600;
-}
 
-.info_box .info-list{
-    padding: 15px 30px;
-}
-
-.info_box .info-list .info{
-    margin: 5px 0;
-    font-size: 17px;
-}
-
-.info_box .info-list .info span{
-    font-weight: 600;
-    color: #007bff;
-}
-.info_box .buttons{
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 0 30px;
-    border-top: 1px solid lightgrey;
-}
-
-.info_box .buttons button{
-    margin: 0 5px;
-    height: 40px;
-    width: 100px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid #007bff;
-    transition: all 0.3s ease;
-}
 
 .quiz_box{
-    width: 550px;
+    width: 80vw;
     background: #fff;
-    border-radius: 5px;
+    border-radius: 0.3vw;
     transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
     pointer-events: none;
@@ -120,111 +59,75 @@ body{
 .quiz_box header{
     position: relative;
     z-index: 2;
-    height: 70px;
-    padding: 0 30px;
+    height: 5vh;
     background: #fff;
-    border-radius: 5px 5px 0 0;
+    border-radius: 0.3vw 0.3vw 0 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.1);
+    justify-content: center;
+    box-shadow: 0 0.1vw 0.1vw 0 #FCC822;
 }
 
 .quiz_box header .title{
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.quiz_box header .timer{
-    color: #004085;
-    background: #cce5ff;
-    border: 1px solid #b8daff;
-    height: 45px;
-    padding: 0 8px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 145px;
-}
-
-.quiz_box header .timer .time_left_txt{
+    font-size: 1.5em;
     font-weight: 400;
-    font-size: 17px;
-    user-select: none;
-}
 
-.quiz_box header .timer .timer_sec{
-    font-size: 18px;
-    font-weight: 500;
-    height: 30px;
-    width: 45px;
-    color: #fff;
-    border-radius: 5px;
-    line-height: 30px;
-    text-align: center;
-    background: #343a40;
-    border: 1px solid #343a40;
-    user-select: none;
-}
-
-.quiz_box header .time_line{
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    height: 3px;
-    background: #007bff;
 }
 
 section{
-    padding: 25px 30px 20px 30px;
+    padding: 1vw 1.5vw 1vw 1.5vw ;
     background: #fff;
 }
 
 section .que_text{
-    font-size: 25px;
+    font-size: 3em;
     font-weight: 600;
+    
 }
 
 section .option_list{
-    padding: 20px 0px;
+    padding: 1vw 0;
     display: block;   
 }
 
 section .option_list .option{
-    background: aliceblue;
-    border: 1px solid #84c5fe;
-    border-radius: 5px;
-    padding: 8px 15px;
-    font-size: 17px;
-    margin-bottom: 15px;
+    
+    background: #ffffff;
+    border: 0.1vw solid #FCC822;
+    border-radius: 0.2vw;
+    padding: 0.6vw 0.6vw;
+    font-size: 1.1em;
+    margin-bottom: 0.8vw;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
 }
 
 section .option_list .option:last-child{
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 section .option_list .option:hover{
-    color: #004085;
-    background: #cce5ff;
-    border: 1px solid #b8daff;
+
+    background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
+    color: white;
+    box-shadow: 0 0.1vw 2.5vh -0.2vw #FBE18F;
+
 }
 
 section .option_list .option.correct{
     color: #155724;
     background: #d4edda;
-    border: 1px solid #c3e6cb;
+    border: 0.1vw solid #c3e6cb;
 }
 
 section .option_list .option.incorrect{
     color: #721c24;
     background: #f8d7da;
-    border: 1px solid #f5c6cb;
+    border: 0.1vw solid #f5c6cb;
 }
 
 section .option_list .option.disabled{
@@ -232,15 +135,15 @@ section .option_list .option.disabled{
 }
 
 section .option_list .option .icon{
-    height: 26px;
-    width: 26px;
-    border: 2px solid transparent;
+    height: 3vh;
+    width: 3vh;
+    border: 0.2vw solid transparent;
     border-radius: 50%;
     text-align: center;
-    font-size: 13px;
+    font-size: 0.8em;
     pointer-events: none;
     transition: all 0.3s ease;
-    line-height: 24px;
+    line-height: 2.7vh;
 }
 .option_list .option .icon.tick{
     color: #23903c;
@@ -255,12 +158,12 @@ section .option_list .option .icon{
 }
 
 footer{
-    height: 60px;
-    padding: 0 30px;
+    height: 8vh;
+    padding: 0vh 1.5vw 5vh 2.5vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-top: 1px solid lightgrey;
+
 }
 
 footer .total_que span{
@@ -270,25 +173,27 @@ footer .total_que span{
 
 footer .total_que span p{
     font-weight: 500;
-    padding: 0 5px;
+    padding: 0 0.4vh;
 }
 
 footer .total_que span p:first-child{
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 footer button{
-    height: 40px;
-    padding: 0 13px;
-    font-size: 18px;
+    width: 10vw;
+    height: 5vh;
+    padding: 0 1vh;
+    font-size: 1.2em;
     font-weight: 400;
     cursor: pointer;
     border: none;
     outline: none;
-    color: #fff;
+    color: #FCC822;
     border-radius: 5px;
-    background: #007bff;
-    border: 1px solid #007bff;
+    background: #ffffff;
+    box-shadow: 0 0.1vw 2.5vh -0.2vw #FBE18F;
+    border: 1px solid #FCC822;
     line-height: 10px;
     opacity: 0;
     pointer-events: none;
@@ -297,13 +202,47 @@ footer button{
 }
 
 footer button:hover{
-    background: #0263ca;
+    background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
+    color: white;
+    box-shadow: 0px 0.1vw 2.5vh -0.2vw #FBE18F;
 }
 
 footer button.show{
     opacity: 1;
     pointer-events: auto;
     transform: scale(1);
+}
+
+.quiz_box footer .timer{
+
+    background: #ffffff;
+    border: 0.1vw solid #FCC822;
+    height: 5vh;
+    padding: 0 0.8vw;
+    border-radius: 0.2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 8vw;
+    font-size: 1.1em;
+}
+
+
+
+
+.quiz_box footer .timer .time_left_txt{
+    font-weight: 400;
+    font-size: 1.1em;
+    user-select: none;
+}
+
+.quiz_box footer .timer .timer_sec{
+    font-size: 1.1em;
+    font-weight: 600;
+    height: 3vh;
+    width: 3vh;
+    text-align: center;
+    user-select: none;
 }
 
 .result_box{
@@ -380,4 +319,23 @@ footer button.show{
 .buttons button.quit:hover{
     color: #fff;
     background: #007bff;
+}
+
+
+.go-dashboard a {
+    display: block;
+    padding: 2vh;
+    font-size: 2vh;
+    width:10vw;
+    text-align: center;
+    background-color: #ffffff;
+    color: #FCC822;
+    text-decoration: none;
+    border:0.1vw solid #FCC822;
+}
+.go-dashboard
+{
+    margin-top: 2.5vh;
+    margin-left: 2.5vw;
+
 }
