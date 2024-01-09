@@ -39,9 +39,11 @@
                     <input name="password" type="password" placeholder="Password"></br>
                     <input type="checkbox" id="remember-me" name="remember-me" value="Remember Me">
                     <label for="remember-me">Remember Me</label>
-                    <a href="main">Forgot Password?</a></br>
-                    <button type="submit" id="login-button">Login</button>
-                    <button id="sign-up-button">Sign up</button> 
+                    <a class="forgot-password" href="main">Forgot Password?</a></br>
+                    <div class="log">
+                    <button type="submit" class="login-button">Login</button>
+                    <a href="register" class="sign-up-button">Sign up</a>
+                    </div>
                 </form>
                 <div class="alt-login">
                     <div class="or-login-with">
