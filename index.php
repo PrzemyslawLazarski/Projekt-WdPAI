@@ -18,6 +18,7 @@ Routing::get('profile', 'DefaultController');
 Routing::get('myquizzes', 'DefaultController');
 
 Routing::post('login', 'SecurityController');
+Routing::post('addQuiz', 'QuizController');
 
 
 Routing::run($path);

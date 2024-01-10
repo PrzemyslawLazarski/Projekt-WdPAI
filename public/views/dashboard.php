@@ -35,6 +35,11 @@
             Home
             <div class="separator"></div>
             <a href="quiz">PLAY</a><br>
+            <div class="add-project">
+                <i class="fas fa-plus"></i>
+            </div>
+            </header>
+
         </div>
             
         

@@ -55,4 +55,5 @@ class DefaultController extends AppController {
     {
         $this->render('myquizzes');
     }
+  
 }

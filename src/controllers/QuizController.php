@@ -1,37 +1,43 @@
 <?php
 
 require_once 'AppController.php';
-require_once __DIR__ .'/../models/User.php';
-require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__ .'/../models/Quiz.php';
 
-class SecurityController extends AppController {
+class QuizController extends AppController {
 
-    public function login()
+    const MAX_FILE_SIZE = 1024*1024;
+    const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
+    const UPLOAD_DIRECTORY = '/../public/uploads/';
+
+    private $message = [];
+
+    public function addQuiz()
+    {   
+        if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
+            move_uploaded_file(
+                $_FILES['file']['tmp_name'], 
+                dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
+            );
+
+            // TODO create new project object and save it in database
+            $quiz = new Quiz($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+
+            return $this->render('myquizzes', ['messages' => $this->message, 'quiz' => $quiz]);
+        }
+        return $this->render('add-quiz', ['messages' => $this->message]);
+    }
+
+    private function validate(array $file): bool
     {
-        $userRepository = new UserRepository();
-
-        if (!$this->isPost()) {
-            return $this->render('login');
+        if ($file['size'] > self::MAX_FILE_SIZE) {
+            $this->message[] = 'File is too large for destination file system.';
+            return false;
         }
 
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $user = $userRepository->getUser($email);
-
-        if (!$user) {
-            return $this->render('login', ['messages' => ['User not found!']]);
+        if (!isset($file['type']) || !in_array($file['type'], self::SUPPORTED_TYPES)) {
+            $this->message[] = 'File type is not supported.';
+            return false;
         }
-
-        if ($user->getEmail() !== $email) {
-            return $this->render('login', ['messages' => ['User with this email not exist!']]);
-        }
-
-        if ($user->getPassword() !== $password) {
-            return $this->render('login', ['messages' => ['Wrong password!']]);
-        }
-
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/dashboard");
+        return true;
     }
 }

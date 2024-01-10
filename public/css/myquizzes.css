@@ -25,7 +25,7 @@ margin-right: 2vw;
 
 .menu
 {
-    background:#3714fd;
+    background:#FCC822;
     width:18vw;
     height:100vh;
     text-align: center;
@@ -48,7 +48,8 @@ a:hover{
 {
 font-size:4em;
 color: #E0E0E0;
-
+display: flex;
+flex-direction: column;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
@@ -68,4 +69,15 @@ padding:2vw;
 {
     display: flex;
     flex-direction: column;
+}
+
+.quizzes p
+{
+    font-size: 0.5em;
+    padding:0;
+}
+.quizzes h2
+{
+    font-size: 0.5em;
+    padding:0;
 }

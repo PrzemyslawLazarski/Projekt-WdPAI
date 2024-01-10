@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" type="text/css" href="public/css/profile.css">
+    <link rel="stylesheet" type="text/css" href="public/css/myquizzes.css">
     <title>My Quizzes</title>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
 </head>
@@ -33,6 +33,16 @@
             <div class="board">
                 My Quizzes
                 <div class="separator"></div>
+                <div class="Add">
+                    <a href="addQuiz">Add</a>
+                </div>
+                <section class="projects">
+                <div class="quizzes">
+                    <img width="200px" src="public/uploads/<?=$quiz->getImage() ?>">
+                    <h2><?= $quiz->getTitle() ?></h2>
+                    <p><?= $quiz->getDescription() ?></p>
+                </div>
+                </section>
             </div>
            
         </div>
