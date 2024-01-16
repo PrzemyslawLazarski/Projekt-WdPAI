@@ -73,11 +73,21 @@ padding:2vw;
 
 .quizzes p
 {
-    font-size: 0.5em;
+    font-size: 0.3em;
     padding:0;
 }
 .quizzes h2
 {
-    font-size: 0.5em;
+    font-size: 0.4em;
     padding:0;
 }
+.projects
+{
+display: flex;
+    flex-direction: row;
+}
+.quizzes
+{
+    padding:1em;
+}
+

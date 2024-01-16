@@ -51,9 +51,6 @@ class DefaultController extends AppController {
     {
         $this->render('profile');
     }
-    public function myquizzes()
-    {
-        $this->render('myquizzes');
-    }
+
   
 }

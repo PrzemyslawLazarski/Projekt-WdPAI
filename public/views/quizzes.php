@@ -22,7 +22,7 @@
             <div class="links">
                 <a href="dashboard">Home</a></br>
                 <a href="profile">Profile</a></br>
-                <a href="myquizzes">My Quizzes</a></br>
+                <a href="quizzes">My Quizzes</a></br>
                 <a href="#">Discover</a></br>
                 <a href="#">Statistics</a></br>
                 <a href="login">Log Out</a>
@@ -37,11 +37,13 @@
                     <a href="addQuiz">Add</a>
                 </div>
                 <section class="projects">
+                    <?php foreach($quizzes as $quiz): ?>
                 <div class="quizzes">
-                    <img width="200px" src="public/uploads/<?=$quiz->getImage() ?>">
+                    <img width="200px" height="200px" src="public/uploads/<?=$quiz->getImage() ?>">
                     <h2><?= $quiz->getTitle() ?></h2>
                     <p><?= $quiz->getDescription() ?></p>
                 </div>
+                   <?php endforeach; ?>
                 </section>
             </div>
            

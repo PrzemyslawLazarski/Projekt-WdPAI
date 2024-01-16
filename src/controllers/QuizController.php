@@ -2,6 +2,8 @@
 
 require_once 'AppController.php';
 require_once __DIR__ .'/../models/Quiz.php';
+require_once __DIR__.'/../repository/QuizRepository.php';
+
 
 class QuizController extends AppController {
 
@@ -10,6 +12,20 @@ class QuizController extends AppController {
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $message = [];
+    private $quizRepository;
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->quizRepository = new QuizRepository();
+    }
+
+    public function quizzes()
+    {
+        $quizzes = $this->quizRepository->getQuizzes();
+        $this->render('quizzes',['quizzes' => $quizzes]);
+    }
 
     public function addQuiz()
     {   
@@ -21,8 +37,11 @@ class QuizController extends AppController {
 
             // TODO create new project object and save it in database
             $quiz = new Quiz($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+            $this->quizRepository->addQuiz($quiz);
 
-            return $this->render('myquizzes', ['messages' => $this->message, 'quiz' => $quiz]);
+            return $this->render('quizzes', [
+                'quizzes' => $this->quizRepository->getQuizzes(),
+                'messages' => $this->message]);
         }
         return $this->render('add-quiz', ['messages' => $this->message]);
     }
