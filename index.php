@@ -19,6 +19,8 @@ Routing::get('quizzes', 'QuizController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('addQuiz', 'QuizController');
+Routing::post('search', 'QuizController');
+Routing::post('addUser', 'UserController');
 
 
 Routing::run($path);

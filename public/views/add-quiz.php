@@ -22,7 +22,7 @@
             <div class="links">
                 <a href="dashboard">Home</a></br>
                 <a href="profile">Profile</a></br>
-                <a href="myquizzes">My Quizzes</a></br>
+                <a href="quizzes">My Quizzes</a></br>
                 <a href="#">Discover</a></br>
                 <a href="#">Statistics</a></br>
                 <a href="login">Log Out</a>
@@ -34,7 +34,6 @@
                 AddQuiz
                 <div class="separator"></div>
                 <section class="project-form">
-                    <h1>Add Quiz</h1>
                     <form action="addQuiz" method="POST" ENCTYPE="multipart/form-data">
                         <div class="messages">
                             <?php

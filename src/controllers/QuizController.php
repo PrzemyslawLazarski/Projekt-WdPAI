@@ -35,7 +35,7 @@ class QuizController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            // TODO create new project object and save it in database
+
             $quiz = new Quiz($_POST['title'], $_POST['description'], $_FILES['file']['name']);
             $this->quizRepository->addQuiz($quiz);
 
@@ -44,6 +44,21 @@ class QuizController extends AppController {
                 'messages' => $this->message]);
         }
         return $this->render('add-quiz', ['messages' => $this->message]);
+    }
+
+    public function search()
+    {
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            echo json_encode($this->quizRepository->getQuizByTitle($decoded['search']));
+        }
     }
 
     private function validate(array $file): bool
@@ -59,4 +74,6 @@ class QuizController extends AppController {
         }
         return true;
     }
+
+
 }

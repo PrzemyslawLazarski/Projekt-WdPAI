@@ -21,10 +21,40 @@ class UserRepository extends Repository
         }
 
         return new User(
+            $user['nickname'],
             $user['email'],
-            $user['password'],
-            $user['name'],
-            $user['surname']
+            $user['password']
+
+
         );
+    }
+
+    public function addUser(User $user): void
+    {
+        $stmt = $this->database->connect()->prepare("
+        INSERT INTO users (nickname, email, password)
+        VALUES (?,?,?)
+        ");
+        $stmt->execute([
+            $user->getNickname(),
+            $user->getEmail(),
+            $user->getPassword()
+        ]);
+    }
+
+    public function isEmailTaken($email) {
+        $stmt = $this->database->connect()->prepare("
+            SELECT * FROM users WHERE email = ?
+        ");
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) != false;
+    }
+
+    public function isNicknameTaken($nickname) {
+        $stmt = $this->database->connect()->prepare("
+            SELECT * FROM users WHERE nickname = ?
+        ");
+        $stmt->execute([$nickname]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) != false;
     }
 }

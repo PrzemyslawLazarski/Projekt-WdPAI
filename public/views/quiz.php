@@ -10,12 +10,12 @@
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
 
     <script type="text/javascript" src="/public/js/questions.js" defer></script>
-    <script type="text/javascript" src="/public/js/script.js" defer></script>
+    <script type="text/javascript" src="/public/js/quiz.js" defer></script>
 </head>
 <body>
     <!-- start Quiz button -->
     <div class="start_btn"><button>Start Quiz</button></div>
-    <div class="go-dashboard"><a href="dashboard">Go back to dashboard</a></div>
+    <div class="go-dashboard"><a href="quizzes">Go back to Quizzes</a></div>
 
 
 

@@ -32,9 +32,11 @@ body
     font-weight: 400;
     line-height: normal;
     margin-left: 3vw;
+    margin-top: 0;
 }
 input[type=text] {
-   
+    margin-top:1vw;
+
     width:36vw;
     height:7vh;
     margin-left: 2vw;
@@ -50,6 +52,7 @@ input[type=text] {
  
 }
 input[type=password]{
+    margin-top:1vw;
     width:36vw;
     height:7vh;
     margin-left: 2vw;
@@ -63,20 +66,21 @@ input[type=password]{
     font-weight: 500;
     line-height: normal;
 }
-input:hover
-{
-    border-left: 0.4vw solid #FCC822;
-}
+/*input:hover*/
+/*{*/
+/*    border-left: 0.4vw solid #FCC822;*/
+/*}*/
 .right
 {
     width:50vw;
     margin-left: 6vw;
-    margin-top: 3vh;
+
     display: flex;
     flex-direction: row;
 }
 
 .go-back-button a {
+    margin-top: 3vh;
     display: block;
     padding: 2vh;
     font-size: 2vh;
@@ -229,4 +233,21 @@ label
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+
+.messages
+{
+    margin-left: 3vw;
+    font-size:1.1em;
+    margin-top:2vh;
+    text-align: center;
+    color: red;
+}
+.no-valid {
+
+    border-radius: 0.6em;
+    box-shadow: 0 0 0.3em red;
+    outline: none;
+
 }

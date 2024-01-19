@@ -3,19 +3,21 @@
 class User {
     private $email;
     private $password;
-    private $name;
-    private $surname;
+    private $nickname;
+
 
     public function __construct(
+        string $nickname,
         string $email,
-        string $password,
-        string $name,
-        string $surname
+        string $password
+
+
     ) {
+        $this->nickname = $nickname;
         $this->email = $email;
         $this->password = $password;
-        $this->name = $name;
-        $this->surname = $surname;
+
+
     }
 
     public function getEmail(): string 
@@ -23,8 +25,12 @@ class User {
         return $this->email;
     }
 
-    public function getPassword()
+    public function getPassword():string
     {
         return $this->password;
+    }
+    public function getNickname():string
+    {
+        return $this->nickname;
     }
 }

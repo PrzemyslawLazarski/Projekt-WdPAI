@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" type="text/css" href="public/css/myquizzes.css">
+    <script type="text/javascript" src="./public/js/search.js" defer></script>
     <title>My Quizzes</title>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
 </head>
@@ -33,16 +34,28 @@
             <div class="board">
                 My Quizzes
                 <div class="separator"></div>
-                <div class="Add">
-                    <a href="addQuiz">Add</a>
+                <header>
+
+                <div class="search-bar">
+                        <input placeholder="search quiz">
                 </div>
+                    <a href="addQuiz">
+                    <div class="Add">
+                        Add
+                    </div>
+                    </a>
+                </header>
                 <section class="projects">
                     <?php foreach($quizzes as $quiz): ?>
-                <div class="quizzes">
+
+                <div class="quiz">
+                    <a href="quiz">PLAY</a>
                     <img width="200px" height="200px" src="public/uploads/<?=$quiz->getImage() ?>">
                     <h2><?= $quiz->getTitle() ?></h2>
                     <p><?= $quiz->getDescription() ?></p>
+
                 </div>
+
                    <?php endforeach; ?>
                 </section>
             </div>
@@ -53,3 +66,14 @@
     </div>
 </body>
 
+<template id="quiz-template">
+
+    <div id ="">
+        <a href="quiz">PLAY</a>
+        <img width="200px" height="200px" src="">
+        <h2>title</h2>
+        <p>description</p>
+
+    </div>
+
+</template>
