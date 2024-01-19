@@ -60,7 +60,10 @@ class QuizController extends AppController {
             echo json_encode($this->quizRepository->getQuizByTitle($decoded['search']));
         }
     }
+    public function fetch_questions()
+    {
 
+    }
     private function validate(array $file): bool
     {
         if ($file['size'] > self::MAX_FILE_SIZE) {
@@ -74,6 +77,8 @@ class QuizController extends AppController {
         }
         return true;
     }
+
+
 
 
 }

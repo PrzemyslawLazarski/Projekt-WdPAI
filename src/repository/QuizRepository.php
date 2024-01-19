@@ -68,7 +68,6 @@ class QuizRepository extends Repository
 
         }
 
-
         return $result;
     }
     public function getQuizByTitle(string $searchString)
@@ -82,6 +81,34 @@ class QuizRepository extends Repository
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getQuestions(): array
+    {
+        $result = [];
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM questions
+        ');
+
+        $stmt->execute();
+        $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($questions as $question)
+        {
+            $result[] = new Question(
+                $question['question'],
+                $question['answera'],
+                $question['answerb'],
+                $question['answerc'],
+                $question['answerd'],
+                $question['answercorrect']
+
+
+            );
+
+        }
+
+        return $result;
     }
 
 }

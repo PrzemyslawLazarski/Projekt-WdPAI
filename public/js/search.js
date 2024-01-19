@@ -1,6 +1,4 @@
-//PROJECTS ZAMIENIC NA QUIZZES
-
-
+//TODO PROJECTS ZAMIENIC NA QUIZZES
 const search = document.querySelector('input[placeholder="search quiz"]');
 const projectContainer = document.querySelector(".projects");
 
