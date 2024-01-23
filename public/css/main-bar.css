@@ -98,6 +98,7 @@ body{
 {
     display: flex;
     flex-direction: column; /* Rozmieszczanie elementów w kolumnie */
+    width:40vw;
 
 }
 
@@ -167,7 +168,8 @@ body{
 
 .image 
 {
-    margin-left: 3.5vw;
+    margin-left: 2vw;
+    width:50vw;
 
 }
 
@@ -184,5 +186,6 @@ body{
 {
     margin-top: 3vh;
     margin-left: 4vw;
+    height:30vh;
 }
 

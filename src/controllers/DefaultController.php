@@ -51,6 +51,9 @@ class DefaultController extends AppController {
     {
         $this->render('profile');
     }
-
+    public function discover()
+    {
+        $this->render('discover');
+    }
   
 }

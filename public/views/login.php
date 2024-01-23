@@ -23,7 +23,9 @@
                 Please login/Signup to your account.
             </div>
             <div class="login-container">
+
                 <form class="login" action="login" method="POST">
+
                     <div class="messages">
                         <?php 
                         if(isset($messages)){
@@ -39,7 +41,7 @@
                     <input name="password" type="password" placeholder="Password"></br>
                     <input type="checkbox" id="remember-me" name="remember-me" value="Remember Me">
                     <label for="remember-me">Remember Me</label>
-                    <a class="forgot-password" href="main">Forgot Password?</a></br>
+                    <a class="forgot-password" href="#">Forgot Password?</a></br>
                     <div class="log">
                     <button type="submit" class="login-button">Login</button>
                     <a href="register" class="sign-up-button">Sign up</a>
@@ -50,10 +52,10 @@
                         Or login with
                     </div>
                     <div class="facebook">
-                        <a href="main">Facebook</a>
+                        <a href="#">Facebook</a>
                     </div>
                     <div class="google">
-                        <a href="main">Google</a>
+                        <a href="#">Google</a>
                     </div>
                     
                     

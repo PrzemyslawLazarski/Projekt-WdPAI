@@ -25,23 +25,26 @@ class QuizRepository extends Repository
             $quiz['description'],
             $quiz['image']
 
+
         );
     }
     public function addQuiz(Quiz $quiz): void
     {
+        session_start();
+
         $date= new DateTime();
         $stmt = $this->database->connect()->prepare("
             INSERT INTO quizzes (title, description, created_at, id_assigned_by, image)
             VALUES (?,?,?,?,?)
         ");
 
-        $assignedById = 1;//TODO pobrać z sesji
+        $userId = $_SESSION['user_id'];
 
         $stmt->execute([
             $quiz->getTitle(),
             $quiz->getDescription(),
             $date->format('Y-m-d'),
-            $assignedById,
+            $userId,
             $quiz->getImage()
 
         ]);
@@ -64,6 +67,37 @@ class QuizRepository extends Repository
                 $quiz['description'],
                 $quiz['image']
 
+
+            );
+
+        }
+
+        return $result;
+    }
+
+    public function getCurrentUserQuizzes(): array
+    {
+        session_start();
+
+        $userId = $_SESSION['user_id'];
+
+        $result = [];
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM quizzes WHERE id_assigned_by = :userId
+        ');
+
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $quizzes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($quizzes as $quiz)
+        {
+            $result[] = new Quiz(
+                $quiz['title'],
+                $quiz['description'],
+                $quiz['image']
+
+
             );
 
         }
@@ -83,32 +117,32 @@ class QuizRepository extends Repository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getQuestions(): array
-    {
-        $result = [];
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM questions
-        ');
-
-        $stmt->execute();
-        $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach($questions as $question)
-        {
-            $result[] = new Question(
-                $question['question'],
-                $question['answera'],
-                $question['answerb'],
-                $question['answerc'],
-                $question['answerd'],
-                $question['answercorrect']
-
-
-            );
-
-        }
-
-        return $result;
-    }
+//    public function getQuestions(): array
+//    {
+//        $result = [];
+//        $stmt = $this->database->connect()->prepare('
+//            SELECT * FROM questions
+//        ');
+//
+//        $stmt->execute();
+//        $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//
+//        foreach($questions as $question)
+//        {
+//            $result[] = new Question(
+//                $question['question'],
+//                $question['answera'],
+//                $question['answerb'],
+//                $question['answerc'],
+//                $question['answerd'],
+//                $question['answercorrect']
+//
+//
+//            );
+//
+//        }
+//
+//        return $result;
+//    }
 
 }

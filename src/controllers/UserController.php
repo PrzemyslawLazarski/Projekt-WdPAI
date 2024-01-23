@@ -33,7 +33,9 @@ class UserController extends AppController {
 
             $this->userRepository->addUser($user);
 
-            return $this->render('dashboard');
+            $this->message[] = "Account successfully created";
+
+            return $this->render('login',['messages' => $this->message]);
         }
         else
         {
@@ -47,7 +49,7 @@ class UserController extends AppController {
     private function validate($nickname,$email,$password,$confirmedPassword): bool
     {
         if (empty($nickname) || empty($email) || empty($password) || empty($confirmedPassword)) {
-            $this->message[] = "Uzupełnij wszystkie pola formularza!";
+            $this->message[] = "Fill in all form fields!";
             return false;
         }
 

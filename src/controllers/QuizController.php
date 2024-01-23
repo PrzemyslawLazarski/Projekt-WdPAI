@@ -23,9 +23,15 @@ class QuizController extends AppController {
 
     public function quizzes()
     {
-        $quizzes = $this->quizRepository->getQuizzes();
+        $quizzes = $this->quizRepository->getCurrentUserQuizzes();
         $this->render('quizzes',['quizzes' => $quizzes]);
     }
+    public function discover()
+    {
+        $discover = $this->quizRepository->getQuizzes();
+        $this->render('discover',['quizzes' => $discover]);
+    }
+
 
     public function addQuiz()
     {   
@@ -40,7 +46,7 @@ class QuizController extends AppController {
             $this->quizRepository->addQuiz($quiz);
 
             return $this->render('quizzes', [
-                'quizzes' => $this->quizRepository->getQuizzes(),
+                'quizzes' => $this->quizRepository->getCurrentUserQuizzes(),
                 'messages' => $this->message]);
         }
         return $this->render('add-quiz', ['messages' => $this->message]);
@@ -60,10 +66,7 @@ class QuizController extends AppController {
             echo json_encode($this->quizRepository->getQuizByTitle($decoded['search']));
         }
     }
-    public function fetch_questions()
-    {
 
-    }
     private function validate(array $file): bool
     {
         if ($file['size'] > self::MAX_FILE_SIZE) {

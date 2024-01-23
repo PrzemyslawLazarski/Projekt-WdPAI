@@ -26,9 +26,30 @@ class UserRepository extends Repository
             $user['password']
 
 
+
         );
     }
+    public function getNicknameById($userId) {
+        $stmt = $this->database->connect()->prepare('
+        SELECT nickname FROM users WHERE id = :userId
+    ');
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
 
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $user ? $user['nickname'] : null;
+    }
+
+    public function getUserIdByEmail($email) {
+        $stmt = $this->database->connect()->prepare('
+        SELECT id FROM users WHERE email = :email
+    ');
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $user ? $user['id'] : null;
+    }
     public function addUser(User $user): void
     {
         $stmt = $this->database->connect()->prepare("

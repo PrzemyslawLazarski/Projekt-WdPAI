@@ -18,15 +18,12 @@ if (!isset($_SESSION['user_id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" type="text/css" href="public/css/myquizzes.css">
-    <title>Dashboard</title>
+    <script type="text/javascript" src="./public/js/search.js" defer></script>
+    <title>Discover</title>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
-
-
 </head>
 
 <body>
-
-
     <div class="container">
         <div class="menu">
             <div class="logo">
@@ -41,34 +38,46 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             
         </div>
-        <div class="board">
-            Home
-            <div class="separator"></div>
-            <div class="hello-message">
-                <?php
-                session_start();
+        <div class="right">
+            <div class="board">
+                Discover
+                <div class="separator"></div>
+                <header>
 
-                require_once 'src/repository/UserRepository.php';
-                $userRepository = new UserRepository();
+                <div class="search-bar">
+                        <input placeholder="search quiz">
+                </div>
 
-                if (isset($_SESSION['user_id'])) {
-                    $nickname = $userRepository->getNicknameById($_SESSION['user_id']);
-                    echo "Hello ". $nickname."!";
+                </header>
+                <section class="projects">
+                    <?php foreach($quizzes as $quiz): ?>
 
-                } else {
-                    echo "Użytkownik niezalogowany.";
-                }
-                ?>
+                <div class="quiz">
+                    <a href="quiz">PLAY</a>
+                    <img width="200px" height="200px" src="public/uploads/<?=$quiz->getImage() ?>">
+                    <h2><?= $quiz->getTitle() ?></h2>
+                    <p><?= $quiz->getDescription() ?></p>
+
+                </div>
+
+                   <?php endforeach; ?>
+                </section>
             </div>
-
-            <div class="session">
-                <?php
-                echo "Session of user with ID: ".($_SESSION['user_id']);
-                ?>
-            </div>
+           
         </div>
             
         
     </div>
 </body>
 
+<template id="quiz-template">
+
+    <div id ="">
+        <a href="quiz">PLAY</a>
+        <img width="200px" height="200px" src="">
+        <h2>title</h2>
+        <p>description</p>
+
+    </div>
+
+</template>

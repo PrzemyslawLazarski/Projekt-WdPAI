@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    $url = "http://$_SERVER[HTTP_HOST]";
+    header("Location: {$url}/login");
+    return;
+}
+?>
+
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,17 +31,19 @@
             </div>
             <div class="links">
                 <a href="dashboard">Home</a></br>
-                <a href="profile">Profile</a></br>
                 <a href="quizzes">My Quizzes</a></br>
-                <a href="#">Discover</a></br>
+                <a href="discover">Discover</a></br>
                 <a href="#">Statistics</a></br>
-                <a href="login">Log Out</a>
+                <a href="/logout">Log Out</a>
             </div>
             
         </div>
         <div class="right">
             <div class="board">
-                My Quizzes
+
+                    My Quizzes
+
+
                 <div class="separator"></div>
                 <header>
 

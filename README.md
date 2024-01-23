@@ -1,4 +1,4 @@
-# Quiz App
+# QuizNinja
 
 Projekt QuizNinja to interaktywna aplikacja webowa do tworzenia i rozwiązywania quizów. Umożliwia użytkownikom testowanie wiedzy z różnych kategorii w angażujący i przyjazny sposób.
 

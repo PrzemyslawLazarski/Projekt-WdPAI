@@ -16,11 +16,12 @@ Routing::get('quiz', 'DefaultController');
 Routing::get('dashboard', 'DefaultController');
 Routing::get('profile', 'DefaultController');
 Routing::get('quizzes', 'QuizController');
+Routing::get('discover', 'QuizController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('addQuiz', 'QuizController');
 Routing::post('search', 'QuizController');
 Routing::post('addUser', 'UserController');
-
+Routing::get('logout', 'SecurityController');
 
 Routing::run($path);

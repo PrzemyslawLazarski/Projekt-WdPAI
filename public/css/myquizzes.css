@@ -51,7 +51,7 @@ height:100vh;
 {
     margin-left: 20vw;
 font-size:4em;
-color: #E0E0E0;
+    font-color:black;
 display: flex;
 flex-direction: column;
 font-style: normal;
@@ -69,11 +69,7 @@ padding:2vw;
 
 
 }
-.right
-{
-    display: flex;
-    flex-direction: column;
-}
+
 .Add
 {
     font-style: normal;
@@ -131,6 +127,7 @@ header
     text-decoration: none;
     border:0.1vw solid #FCC822;
     margin-right: 5vw;
+    border-radius: 6em;
 
 
 
@@ -146,11 +143,49 @@ header
     padding:0;
     width: 15vw;
     margin-bottom: 1vw;
+    font-color:black;
 
 }
 section>div>a
 {
     font-size: 1em;
 margin-left: 4vw;
+    font-color:black;
 
+}
+.session
+{
+    font-size:0.2em;
+    margin-top: 68vh;
+    margin-left: 65vw;
+}
+.hello-message
+{
+    font-size:0.8em;
+}
+.right
+{
+    display: flex;
+    flex-direction: column;
+}
+
+section.project-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-form>form {
+    display: flex;
+    flex-direction: column;
+}
+
+input,
+textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 1em;
+    margin: 1em;
+    width: 50%;
 }
