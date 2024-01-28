@@ -215,7 +215,32 @@ class QuizRepository extends Repository
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+/*
+    function getQuizById($quizId) {
+        // Sprawdzamy, czy $quizId jest liczbą, aby uniknąć SQL Injection
+        if (!is_numeric($quizId)) {
+            return null; // Możesz również rzucać wyjątek lub obsługiwać błąd inaczej
+        }
 
+        try {
+            // Przygotowanie zapytania SQL
+            $stmt = $this->database->connect()->prepare("SELECT * FROM quizzes WHERE id = :quizId");
+            $stmt->bindParam(':quizId', $quizId, PDO::PARAM_INT);
+
+            // Wykonanie zapytania
+            $stmt->execute();
+
+            // Pobranie wyniku
+            $quiz = $stmt->fetch(PDO::FETCH_OBJ);
+
+            return $quiz;
+
+        } catch (PDOException $e) {
+            // Obsługa błędów połączenia lub zapytania
+            die("Wystąpił błąd przy pobieraniu quizu: " . $e->getMessage());
+        }
+    }
+*/
     public function deleteQuizByTitle(string $searchString)
     {
 

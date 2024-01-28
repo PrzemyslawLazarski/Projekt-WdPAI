@@ -62,7 +62,9 @@ if (!isset($_SESSION['user_id'])) {
                     <?php foreach($quizzes as $quiz): ?>
 
                         <div id="<?= $quiz->getId(); ?>">
-                    <a href="quiz">PLAY</a>
+
+                            <a href="quiz?quiz_id=<?= $quiz->getId(); ?>">PLAY</a>
+
                     <img width="200px" height="200px" src="public/uploads/<?=$quiz->getImage() ?>">
                     <h2><?= $quiz->getTitle() ?></h2>
                     <p><?= $quiz->getDescription() ?></p>

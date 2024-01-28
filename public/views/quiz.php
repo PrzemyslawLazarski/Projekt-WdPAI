@@ -8,6 +8,8 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: {$url}/login");
     return;
 }
+//$quizId = isset($_GET['quiz_id']) ? $_GET['quiz_id'] : null;
+
 ?>
 
 <head>
@@ -31,7 +33,7 @@ if (!isset($_SESSION['user_id'])) {
     <!-- Quiz Box -->
     <div class="quiz_box">
         <header>
-            <div class="title">Quiz Title</div>
+            <div class="title">TITLE</div>
 
         </header>
         <section>

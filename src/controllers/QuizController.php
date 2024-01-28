@@ -39,7 +39,13 @@ class QuizController extends AppController {
         $this->render('adminPanel',['quizzes' => $adminPanel]);
 
     }
-
+    /*
+    public function getQuizById($quizId)
+    {
+        $quiz = $this->quizRepository->getQuizById($quizId);
+        $this->render('quiz',['quiz' => $quiz]);
+    }
+    */
     public function addQuiz()
     {
 
@@ -88,6 +94,8 @@ class QuizController extends AppController {
         }
         return $this->render('add-quiz', ['messages' => $this->message]);
     }
+
+
 
     public function search()
     {
