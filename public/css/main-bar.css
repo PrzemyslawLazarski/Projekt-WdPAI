@@ -152,8 +152,25 @@ body{
     text-decoration: none;
     background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
     box-shadow: 0px 10.45024px 23.22276px -6.96683px #FBE18F;
+    margin-top: 9vh;
 
-  
+}
+
+
+
+.login-button>a:hover{
+    background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
+    color: white;
+    box-shadow: 0px 0.1vw 2.5vh -0.2vw #FBE18F;
+    transition: all 0.3s ease;
+}
+
+.start-button > a:hover{
+    background: linear-gradient(95deg, white 0%, white 100%);
+    color: #FCC822;
+    box-shadow: 0px 0.1vw 2.5vh -0.2vw #FBE18F;
+    transition: all 0.3s ease;
+    border: 0.581px solid #FCC822;
 }
 
 .knowmore-button a

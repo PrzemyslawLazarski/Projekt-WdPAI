@@ -23,5 +23,6 @@ Routing::post('addQuiz', 'QuizController');
 Routing::post('search', 'QuizController');
 Routing::post('addUser', 'UserController');
 Routing::get('logout', 'SecurityController');
+Routing::get('getQuizQuestions', 'QuizController');
 
 Routing::run($path);

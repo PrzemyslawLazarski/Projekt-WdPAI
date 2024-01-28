@@ -54,9 +54,7 @@
                     <div class="start-button">
                         <a href="login">Start solving</a>
                     </div>
-                    <div class="knowmore-button">
-                        <a href="howitworks">Know more</a>
-                    </div>
+
                     
                 </div>
                 <div class="smaller-image">

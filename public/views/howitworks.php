@@ -41,19 +41,19 @@
                 </div>
                 <div class="content">
                     1. Registration:
-                    We start with the first step - register on our website! Enter your details so</br>
+                    We start with the first step - register on our website! Enter your details so
                     that we can tailor the quizzes to your interests.</br></br>
 
                     2. Choose Topics:
-                    Once logged in, explore a variety of quiz topics. Choose what interests you,</br>
+                    Once logged in, explore a variety of quiz topics. Choose what interests you,
                     whether it's history, science or pop culture.</br></br>
 
                     3. Choose Quiz:
-                    When you find an interesting quiz, click and dive into the world of questions! </br>
+                    When you find an interesting quiz, click and dive into the world of questions!
                     Answer, learn and have fun.</br></br>
 
                     4. Check Results:
-                    After completing the quiz, see your results and find out how much you know.</br>
+                    After completing the quiz, see your results and find out how much you know.
                      It's a great way to track your progress!</br>
                 </div>
                 <div class="start-bar">

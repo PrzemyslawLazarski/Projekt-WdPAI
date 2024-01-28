@@ -36,17 +36,17 @@ if (!isset($_SESSION['user_id'])) {
         </header>
         <section>
             <div class="que_text">
-                <!-- Here I've inserted question from JavaScript -->
+
             </div>
             <div class="option_list">
-                <!-- Here I've inserted options from JavaScript -->
+
             </div>
         </section>
 
-        <!-- footer of Quiz Box -->
+
         <footer>
             <div class="total_que">
-                <!-- Here I've inserted Question Count Number from JavaScript -->
+
             </div>
             <div class="timer">
                 <div class="time_left_txt">Time Left</div>
@@ -62,7 +62,7 @@ if (!isset($_SESSION['user_id'])) {
             <img src="public/img/score.svg">
             <div class="complete_text">Your score:</div>
             <div class="score_text">
-            <!-- Here I've inserted Score Result from JavaScript -->
+
         </div>
         </div>
         

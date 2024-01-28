@@ -89,6 +89,11 @@ margin-left:1vw;
     border:0.1vw solid #FCC822;
 
 }
+.Add:hover{
+    background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
+    color: white;
+    box-shadow: 0px 0.1vw 2.5vh -0.2vw #FBE18F;
+}
 .Add>a:visited
 {
     color: #FCC822;

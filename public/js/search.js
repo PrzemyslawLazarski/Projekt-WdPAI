@@ -17,6 +17,7 @@ search.addEventListener("keyup", function (event) {
         }).then(function (response) {
             return response.json();
         }).then(function (projects) {
+            console.log(projects);
             projectContainer.innerHTML = "";
             loadProjects(projects)
         });

@@ -45,19 +45,7 @@
                     <div class="already-have"> Already have an account?<a href="login">Login</a></div>
                     <button type="submit" name='sign-up-button' id="sign-up-button">Sign up</button>
                 </form>
-                <div class="alt-login">
-                    <div class="or-login-with">
-                        Or login with
-                    </div>
-                    <div class="facebook">
-                        <a href="main">Facebook</a>
-                    </div>
-                    <div class="google">
-                        <a href="main">Google</a>
-                    </div>
-                    
-                    
-                </div>
+
                 
             </div>
         </div>

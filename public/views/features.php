@@ -46,15 +46,15 @@
                 
 
                 Visual Appeal:<br>
-                Expect beautiful graphics and a clear design that will make quizzing not only educational.<br>
+                Expect beautiful graphics and a clear design that will make quizzing not only educational.
                 but also aesthetic.<br><br>
 
                 Ease of Use:<br>
-                Our website has been designed with ease of use in mind. Play quizzes without unnecessary<br>
+                Our website has been designed with ease of use in mind. Play quizzes without unnecessary
                 difficulties!<br><br>
 
                 Progress Tracking:<br>
-                See how you develop your knowledge! Check your results, track your progress and enjoy <br>
+                See how you develop your knowledge! Check your results, track your progress and enjoy
                 learning every question.<br>
                 </div>
                 <div class="start-bar">

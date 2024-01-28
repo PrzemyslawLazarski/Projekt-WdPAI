@@ -2,6 +2,8 @@
 
 require_once 'Repository.php';
 require_once __DIR__.'/../models/Quiz.php';
+require_once __DIR__.'/../models/Question.php';
+require_once __DIR__.'/../models/Answer.php';
 
 class QuizRepository extends Repository
 {
@@ -23,31 +25,92 @@ class QuizRepository extends Repository
         return new Quiz(
             $quiz['title'],
             $quiz['description'],
-            $quiz['image']
+            $quiz['createdAt'],
+            $quiz['idAssignedBy'],
+            $quiz['image'],
+            $quiz['questions']
 
 
         );
     }
-    public function addQuiz(Quiz $quiz): void
-    {
+    public function addQuiz(Quiz $quiz): void {
         session_start();
-
-        $date= new DateTime();
-        $stmt = $this->database->connect()->prepare("
-            INSERT INTO quizzes (title, description, created_at, id_assigned_by, image)
-            VALUES (?,?,?,?,?)
-        ");
-
+        $date = new DateTime();
         $userId = $_SESSION['user_id'];
 
-        $stmt->execute([
+        // Uzyskaj połączenie PDO
+        $pdo = $this->database->connect();
+
+        // Dodaj quiz
+        $stmtQuiz = $pdo->prepare("
+        INSERT INTO quizzes (title, description, created_at, id_assigned_by, image)
+        VALUES (?, ?, ?, ?, ?)
+    ");
+
+        $stmtQuiz->execute([
             $quiz->getTitle(),
             $quiz->getDescription(),
             $date->format('Y-m-d'),
             $userId,
             $quiz->getImage()
-
         ]);
+
+        // Pobierz ID dodanego quizu
+        $quizId = $pdo->lastInsertId();
+
+        // Dodaj pytania
+        foreach ($quiz->getQuestions() as $question) {
+            $stmtQuestion = $pdo->prepare("
+            INSERT INTO questions (quiz_id, question_text)
+            VALUES (?, ?)
+        ");
+
+            $stmtQuestion->execute([$quizId, $question->getQuestionText()]);
+
+            // Pobierz ID dodanego pytania
+            $questionId = $pdo->lastInsertId();
+
+            // Dodaj odpowiedzi
+            foreach ($question->getAnswers() as $answer) {
+                $stmtAnswer = $pdo->prepare("
+                INSERT INTO answers (question_id, answer_text, is_correct)
+                VALUES (?, ?, ?)
+            ");
+
+                $isCorrectValue = $answer->getIsCorrect() ? 1 : 0;
+                $stmtAnswer->execute([$questionId, $answer->getAnswerText(), $isCorrectValue]);
+            }
+        }
+    }
+    public function getQuestionsForQuiz($quizId): array {
+        $questions = [];
+        $pdo = $this->database->connect();
+
+        $stmt = $pdo->prepare("
+        SELECT q.id, q.question_text, a.id as answer_id, a.answer_text, a.is_correct
+        FROM questions q
+        JOIN answers a ON q.id = a.question_id
+        WHERE q.quiz_id = ?
+        ORDER BY q.id, a.id
+    ");
+        $stmt->execute([$quizId]);
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            if (!isset($questions[$row['id']])) {
+                $questions[$row['id']] = [
+                    'question_text' => $row['question_text'],
+                    'answers' => []
+                ];
+            }
+
+            $questions[$row['id']]['answers'][] = [
+                'answer_id' => $row['answer_id'],
+                'answer_text' => $row['answer_text'],
+                'is_correct' => $row['is_correct']
+            ];
+        }
+
+        return array_values($questions);
     }
 
     public function getQuizzes(): array
@@ -65,7 +128,10 @@ class QuizRepository extends Repository
             $result[] = new Quiz(
                 $quiz['title'],
                 $quiz['description'],
-                $quiz['image']
+                $quiz['createdAt'],
+                $quiz['idAssignedBy'],
+                $quiz['image'],
+                $quiz['questions']
 
 
             );
@@ -95,7 +161,10 @@ class QuizRepository extends Repository
             $result[] = new Quiz(
                 $quiz['title'],
                 $quiz['description'],
-                $quiz['image']
+                $quiz['createdAt'],
+                $quiz['idAssignedBy'],
+                $quiz['image'],
+                $quiz['questions']
 
 
             );
@@ -117,32 +186,39 @@ class QuizRepository extends Repository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-//    public function getQuestions(): array
-//    {
-//        $result = [];
-//        $stmt = $this->database->connect()->prepare('
-//            SELECT * FROM questions
-//        ');
-//
-//        $stmt->execute();
-//        $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//
-//        foreach($questions as $question)
-//        {
-//            $result[] = new Question(
-//                $question['question'],
-//                $question['answera'],
-//                $question['answerb'],
-//                $question['answerc'],
-//                $question['answerd'],
-//                $question['answercorrect']
-//
-//
-//            );
-//
-//        }
-//
-//        return $result;
-//    }
+    public function getQuizQuestions($quizId) {
+        $stmt = $this->database->connect()->prepare("
+        SELECT q.id AS question_id, q.question_text, a.id AS answer_id, a.answer_text, a.is_correct
+        FROM questions q
+        JOIN answers a ON q.id = a.question_id
+        WHERE q.quiz_id = :quizId
+    ");
+
+        $stmt->bindParam(':quizId', $quizId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Organizujemy dane w strukturę, którą łatwo będzie przetworzyć w kodzie JavaScript
+        $questions = [];
+        foreach ($result as $row) {
+            $questionId = $row['question_id'];
+
+            if (!isset($questions[$questionId])) {
+                $questions[$questionId] = [
+                    'question_text' => $row['question_text'],
+                    'answers' => []
+                ];
+            }
+
+            $questions[$questionId]['answers'][] = [
+                'answer_id' => $row['answer_id'],
+                'answer_text' => $row['answer_text'],
+                'is_correct' => $row['is_correct']
+            ];
+        }
+
+        return $questions;
+    }
 
 }
