@@ -2,6 +2,7 @@
 
 class Quiz {
     private $title;
+    private $id;
     private $description;
     private $createdAt;
     private $idAssignedBy;
@@ -9,16 +10,22 @@ class Quiz {
     private $questions; // Lista pytań
 
 
-    public function __construct($title, $description, $createdAt, $idAssignedBy, $image, $questions) {
+    public function __construct($title, $description, $createdAt, $idAssignedBy, $image, $questions,$id=null) {
+
         $this->title = $title;
         $this->description = $description;
         $this->createdAt = $createdAt;
         $this->idAssignedBy = $idAssignedBy;
         $this->image = $image;
         $this->questions = $questions;
+        $this->id = $id;
     }
-
-
+    public function getId() {
+        return $this->id;
+    }
+    public function setId($id) {
+        $this->id = $id;
+    }
     public function getTitle()
     {
         return $this->title;

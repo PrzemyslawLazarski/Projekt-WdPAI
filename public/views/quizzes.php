@@ -33,7 +33,9 @@ if (!isset($_SESSION['user_id'])) {
                 <a href="dashboard">Home</a></br>
                 <a href="quizzes">My Quizzes</a></br>
                 <a href="discover">Discover</a></br>
-                <a href="#">Statistics</a></br>
+                <?php if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1): ?>
+                    <a href="adminPanel">Admin Panel</a></br>
+                <?php endif; ?>
                 <a href="/logout">Log Out</a>
             </div>
             
@@ -59,7 +61,7 @@ if (!isset($_SESSION['user_id'])) {
                 <section class="projects">
                     <?php foreach($quizzes as $quiz): ?>
 
-                <div class="quiz">
+                        <div id="<?= $quiz->getId(); ?>">
                     <a href="quiz">PLAY</a>
                     <img width="200px" height="200px" src="public/uploads/<?=$quiz->getImage() ?>">
                     <h2><?= $quiz->getTitle() ?></h2>
@@ -79,7 +81,8 @@ if (!isset($_SESSION['user_id'])) {
 
 <template id="quiz-template">
 
-    <div id ="">
+    <div >
+
         <a href="quiz">PLAY</a>
         <img width="200px" height="200px" src="">
         <h2>title</h2>

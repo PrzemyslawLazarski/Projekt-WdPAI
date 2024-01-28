@@ -44,7 +44,9 @@ $questions = $quizRepo->getQuestionsForQuiz($quizId);
                 <a href="dashboard">Home</a></br>
                 <a href="quizzes">My Quizzes</a></br>
                 <a href="discover">Discover</a></br>
-                <a href="#">Statistics</a></br>
+                <?php if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1): ?>
+                <a href="adminPanel">Admin Panel</a></br>
+                <?php endif; ?>
                 <a href="/logout">Log Out</a>
             </div>
             
@@ -81,7 +83,18 @@ $questions = $quizRepo->getQuestionsForQuiz($quizId);
 
             <div class="session">
                 <?php
+                session_start();
                 echo "Session of user with ID: ".($_SESSION['user_id']);
+                if($_SESSION['role_id']==1)
+                {
+                    echo "<br>Admin";
+                }
+                else
+                {
+                    echo"<br>User";
+                }
+
+
                 ?>
             </div>
         </div>

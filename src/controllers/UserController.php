@@ -19,7 +19,6 @@ class UserController extends AppController {
 
     public function addUser()
     {
-      // TODO Warunki sprawdzające czy mozna dodac usera
 
 
         $nickname = $_POST['nickname'];
@@ -29,7 +28,8 @@ class UserController extends AppController {
 
         if($this->validate($nickname,$email,$password,$confirmedPassword))
         {
-            $user = new User($nickname,$email,$password );
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+            $user = new User($nickname,$email,$hashedPassword );
 
             $this->userRepository->addUser($user);
 

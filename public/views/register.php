@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/register.css">
     <title>Register</title>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
-    <script type="text/javascript" src="./public/js/script.js" defer></script>
+    <script type="text/javascript" src="./public/js/validate.js" defer></script>
 </head>
 
 <body>

@@ -9,7 +9,7 @@ if (!$quizId) {
     echo json_encode(['error' => 'No quiz ID provided']);
     exit;
 }
-echo ("Siema");
+
 $repository = new QuizRepository();  // Załóż, że masz taki obiekt
 $questions = $repository->getQuestionsForQuiz($quizId);
 

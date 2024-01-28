@@ -120,7 +120,7 @@ header
 }
 
 
-.search-bar > input {
+.search-bar > input,.delete-bar > input{
     height:4vh;
     display: block;
     padding: 2vh;
@@ -137,7 +137,7 @@ header
 
 
 }
-.search-bar > input::placeholder
+.search-bar > input::placeholder,.delete-bar> input::placeholder
 {
     color:#FCC822;
 }

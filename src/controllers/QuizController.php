@@ -33,7 +33,12 @@ class QuizController extends AppController {
         $discover = $this->quizRepository->getQuizzes();
         $this->render('discover',['quizzes' => $discover]);
     }
+    public function adminPanel()
+    {
+        $adminPanel = $this->quizRepository->getQuizzes();
+        $this->render('adminPanel',['quizzes' => $adminPanel]);
 
+    }
 
     public function addQuiz()
     {
@@ -73,8 +78,10 @@ class QuizController extends AppController {
             $image = basename($_FILES['file']['name']);
 
             $quiz = new Quiz($title, $description, $createdAt, $idAssignedBy, $image, $questions);
-            $this->quizRepository->addQuiz($quiz);
-
+            //
+            $quizId = $this->quizRepository->addQuiz($quiz);
+            $quiz->setId($quizId);
+            //
             return $this->render('quizzes', [
                 'quizzes' => $this->quizRepository->getCurrentUserQuizzes(),
                 'messages' => $this->message]);
@@ -95,6 +102,29 @@ class QuizController extends AppController {
             http_response_code(200);
 
             echo json_encode($this->quizRepository->getQuizByTitle($decoded['search']));
+        }
+    }
+
+    public function delete()
+    {
+        try {
+            $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+            if ($contentType === "application/json") {
+                $content = trim(file_get_contents("php://input"));
+                $decoded = json_decode($content, true);
+
+                $this->quizRepository->deleteQuizByTitle($decoded['del']);
+
+                header('Content-type: application/json');
+                echo json_encode(["message" => "Quiz został usunięty."]);
+            } else {
+                throw new Exception("Nieprawidłowy typ zawartości.");
+            }
+        } catch (Exception $e) {
+            header('Content-type: application/json');
+            http_response_code(500);
+            echo json_encode(["error" => $e->getMessage()]);
         }
     }
 

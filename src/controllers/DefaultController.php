@@ -55,5 +55,9 @@ class DefaultController extends AppController {
     {
         $this->render('discover');
     }
+    public function adminPanel()
+    {
+        $this->render('adminPanel');
+    }
   
 }

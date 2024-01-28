@@ -29,13 +29,18 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => ['User with this email not exist!']]);
         }
 
-        if ($user->getPassword() !== $password) {
+        if (!password_verify($password, $user->getPassword())) {
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
 
+
         $userId = $userRepository->getUserIdByEmail($email);
         $_SESSION['user_id'] = $userId;
+
+        $roleId = $userRepository->getRoleIdByEmail($email);
+        $_SESSION['role_id'] = $roleId;
+
 
 
         $url = "http://$_SERVER[HTTP_HOST]";

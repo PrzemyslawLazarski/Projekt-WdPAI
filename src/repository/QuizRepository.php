@@ -33,54 +33,80 @@ class QuizRepository extends Repository
 
         );
     }
-    public function addQuiz(Quiz $quiz): void {
-        session_start();
-        $date = new DateTime();
-        $userId = $_SESSION['user_id'];
+    public function addQuiz(Quiz $quiz): int {
+        try {
+            session_start();
+            $date = new DateTime();
+            $userId = $_SESSION['user_id'];
 
-        // Uzyskaj połączenie PDO
-        $pdo = $this->database->connect();
+            // Uzyskaj połączenie PDO
+            $pdo = $this->database->connect();
 
-        // Dodaj quiz
-        $stmtQuiz = $pdo->prepare("
-        INSERT INTO quizzes (title, description, created_at, id_assigned_by, image)
-        VALUES (?, ?, ?, ?, ?)
-    ");
+            // Rozpocznij transakcję
+            $pdo->beginTransaction();
 
-        $stmtQuiz->execute([
-            $quiz->getTitle(),
-            $quiz->getDescription(),
-            $date->format('Y-m-d'),
-            $userId,
-            $quiz->getImage()
-        ]);
-
-        // Pobierz ID dodanego quizu
-        $quizId = $pdo->lastInsertId();
-
-        // Dodaj pytania
-        foreach ($quiz->getQuestions() as $question) {
-            $stmtQuestion = $pdo->prepare("
-            INSERT INTO questions (quiz_id, question_text)
-            VALUES (?, ?)
+            // Dodaj quiz
+            $stmtQuiz = $pdo->prepare("
+            INSERT INTO quizzes (title, description, created_at, id_assigned_by, image)
+            VALUES (?, ?, ?, ?, ?)
         ");
 
-            $stmtQuestion->execute([$quizId, $question->getQuestionText()]);
+            $stmtQuiz->execute([
+                $quiz->getTitle(),
+                $quiz->getDescription(),
+                $date->format('Y-m-d'),
+                $userId,
+                $quiz->getImage()
+            ]);
 
-            // Pobierz ID dodanego pytania
-            $questionId = $pdo->lastInsertId();
+            // Pobierz ID dodanego quizu
+            $quizId = $pdo->lastInsertId();
 
-            // Dodaj odpowiedzi
-            foreach ($question->getAnswers() as $answer) {
-                $stmtAnswer = $pdo->prepare("
-                INSERT INTO answers (question_id, answer_text, is_correct)
-                VALUES (?, ?, ?)
+            // Dodaj pytania
+            foreach ($quiz->getQuestions() as $question) {
+                $stmtQuestion = $pdo->prepare("
+                INSERT INTO questions (quiz_id, question_text)
+                VALUES (?, ?)
             ");
 
-                $isCorrectValue = $answer->getIsCorrect() ? 1 : 0;
-                $stmtAnswer->execute([$questionId, $answer->getAnswerText(), $isCorrectValue]);
+                $stmtQuestion->execute([$quizId, $question->getQuestionText()]);
+
+                // Pobierz ID dodanego pytania
+                $questionId = $pdo->lastInsertId();
+
+                // Dodaj odpowiedzi
+                foreach ($question->getAnswers() as $answer) {
+                    $stmtAnswer = $pdo->prepare("
+                    INSERT INTO answers (question_id, answer_text, is_correct)
+                    VALUES (?, ?, ?)
+                ");
+
+                    $isCorrectValue = $answer->getIsCorrect() ? 1 : 0;
+                    $stmtAnswer->execute([$questionId, $answer->getAnswerText(), $isCorrectValue]);
+                }
             }
+
+            // Zakończ transakcję
+            $pdo->commit();
+
+            return (int)$quizId;
+        } catch (Exception $e) {
+            // W razie wystąpienia błędu, cofnij transakcję
+            $pdo->rollBack();
+            throw $e; // Przekaż błąd do wyższego poziomu
         }
+    }
+
+    public function removeQuiz(int $quizId): void {
+        session_start();
+
+        $pdo = $this->database->connect();
+
+        $stmt = $pdo->prepare("DELETE FROM quizzes WHERE id = ?");
+
+        $stmt->execute([$quizId]);
+
+
     }
     public function getQuestionsForQuiz($quizId): array {
         $questions = [];
@@ -113,6 +139,7 @@ class QuizRepository extends Repository
         return array_values($questions);
     }
 
+
     public function getQuizzes(): array
     {
         $result = [];
@@ -131,7 +158,8 @@ class QuizRepository extends Repository
                 $quiz['createdAt'],
                 $quiz['idAssignedBy'],
                 $quiz['image'],
-                $quiz['questions']
+                $quiz['questions'],
+                $quiz['id']
 
 
             );
@@ -164,7 +192,9 @@ class QuizRepository extends Repository
                 $quiz['createdAt'],
                 $quiz['idAssignedBy'],
                 $quiz['image'],
-                $quiz['questions']
+                $quiz['questions'],
+                $quiz['id']
+
 
 
             );
@@ -181,6 +211,20 @@ class QuizRepository extends Repository
             SELECT * FROM quizzes WHERE LOWER(title) LIKE :search OR LOWER(description) LIKE :search
         ');
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteQuizByTitle(string $searchString)
+    {
+
+
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM quizzes WHERE title LIKE :del
+
+        ');
+        $stmt->bindParam(':del', $searchString, PDO::PARAM_STR);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
