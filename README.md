@@ -30,10 +30,15 @@ Instalacja
 
 Postępuj zgodnie z poniższymi krokami, aby zainstalować i skonfigurować aplikację rezerwacji przy użyciu Docker Compose:
 Clone the repository to your local machine.
-git clone https://github.com/your-username/online-restaurant-reservation.git
+
+git clone https://github.com/your-username/Projekt-WdPAI.git
+
 Build the Docker containers.
+
  docker-compose build
+ 
 Start the application.
+
  docker-compose up
  
 ## Użycie
