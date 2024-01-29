@@ -8,6 +8,8 @@ Projekt QuizNinja to interaktywna aplikacja webowa do tworzenia i rozwiązywania
 - Dynamiczne generowanie pytań z bazy danych.
 - Zliczanie punktów i wyświetlanie wyników po zakończeniu quizu.
 - Stylowy i responsywny interfejs użytkownika.
+- Wyszukiwanie nowych quizów
+- Rejestracja i uwierzytelnianie użytkowników
 
 ## Technologie
 
@@ -17,7 +19,23 @@ Projekt wykorzystuje następujące technologie:
 - JavaScript
 - PHP
 - PostgreSQL
+- Docker
 
+##Instalacja
+
+Zanim zaczniesz, upewnij się, że masz zainstalowane lub skonfigurowane następujące oprogramowanie i usługi:
+
+Docker: Zainstaluj Docker na swoim komputerze. Możesz pobrać Docker ze strony oficjalnej witryny.
+Instalacja
+
+Postępuj zgodnie z poniższymi krokami, aby zainstalować i skonfigurować aplikację rezerwacji przy użyciu Docker Compose:
+Clone the repository to your local machine.
+git clone https://github.com/your-username/online-restaurant-reservation.git
+Build the Docker containers.
+ docker-compose build
+Start the application.
+ docker-compose up
+ 
 ## Użycie
 
 Aby rozpocząć quiz, kliknij przycisk "Start Quiz". Następnie odpowiedz na pojawiające się pytania, wybierając jedną z dostępnych opcji. Po zakończeniu quizu wyświetli się Twój wynik.
