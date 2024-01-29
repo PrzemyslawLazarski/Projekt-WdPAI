@@ -1,4 +1,20 @@
-# QuizNinja
+# QuizNinja - Online Quiz Application
+
+## Spis Treści
+
+- [Wprowadzenie](#wprowadzenie)
+- [Funkcje](#funkcje)
+- [Technologie](#technologie)
+- [Wymagania](#wymagania)
+- [Instalacja](#instalacja)
+- [Użycie](#użycie)
+- [Kontrybucja](#kontrybucja)
+- [Licencja](#licencja)
+- [Autorzy](#autorzy)
+- [Status projektu](#status-projektu)
+- [FAQ](#faq)
+
+## Wprowadzenie
 
 Projekt QuizNinja to interaktywna aplikacja webowa do tworzenia i rozwiązywania quizów. Umożliwia użytkownikom testowanie wiedzy z różnych kategorii w angażujący i przyjazny sposób.
 
@@ -21,26 +37,29 @@ Projekt wykorzystuje następujące technologie:
 - PostgreSQL
 - Docker
 
-##Instalacja
+## Wymagania
 
 Zanim zaczniesz, upewnij się, że masz zainstalowane lub skonfigurowane następujące oprogramowanie i usługi:
 
-Docker: Zainstaluj Docker na swoim komputerze. Możesz pobrać Docker ze strony oficjalnej witryny.
-Instalacja
+ - Docker: Zainstaluj Docker na swoim komputerze. Możesz pobrać Docker ze strony oficjalnej witryny.
 
-Postępuj zgodnie z poniższymi krokami, aby zainstalować i skonfigurować aplikację rezerwacji przy użyciu Docker Compose:
-Clone the repository to your local machine.
+## Instalacja
 
+Postępuj zgodnie z poniższymi krokami, aby zainstalować i skonfigurować aplikację przy użyciu Docker Compose:
+
+Sklonuj repozytorium na swój komputer
+```bash
 git clone https://github.com/your-username/Projekt-WdPAI.git
+```
 
-Build the Docker containers.
-
- docker-compose build
- 
-Start the application.
-
+Zbuduj kontenery Docker
+```bash
+docker-compose build
+ ```
+Uruchom aplikację
+```bash
  docker-compose up
- 
+  ```
 ## Użycie
 
 Aby rozpocząć quiz, kliknij przycisk "Start Quiz". Następnie odpowiedz na pojawiające się pytania, wybierając jedną z dostępnych opcji. Po zakończeniu quizu wyświetli się Twój wynik.
