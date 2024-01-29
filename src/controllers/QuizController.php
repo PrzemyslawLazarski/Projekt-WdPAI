@@ -40,19 +40,34 @@ class QuizController extends AppController {
 
     }
 
-    public function getQuestionsForQuiz($quizId)
+    public function getQuestionsForQuiz($quizId = null)
     {
-        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        if (!$quizId) {
+            $quizId = $_GET['quizId'] ?? null;
+        }
 
-        if ($contentType === "application/json") {
-            $content = trim(file_get_contents("php://input"));
+        if ($quizId) {
+            // Utworzenie instancji repozytorium quizów
+            $quizRepository = new QuizRepository();
 
-            $decoded = json_decode($content, true);
+            // Pobieranie pytań dla podanego ID quizu
+            $questions = $quizRepository->getQuestionsForQuiz($quizId);
 
-            header('Content-type: application/json');
-            http_response_code(200);
-
-            echo json_encode($this->quizRepository->getQuestionsForQuiz($quizId));
+            // Sprawdzenie, czy otrzymano pytania
+            if (!empty($questions)) {
+                // Wysłanie pytań jako JSON
+                header('Content-type: application/json');
+                http_response_code(200);
+                echo json_encode($questions);
+            } else {
+                // Brak pytań dla podanego ID quizu
+                http_response_code(404); // Nie znaleziono
+                echo json_encode(['error' => 'Nie znaleziono pytań dla tego quizu']);
+            }
+        } else {
+            // Nieprawidłowe żądanie, brak ID quizu
+            http_response_code(400);
+            echo json_encode(['error' => 'Brak ID quizu']);
         }
     }
 

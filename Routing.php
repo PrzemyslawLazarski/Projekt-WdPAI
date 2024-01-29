@@ -21,6 +21,7 @@ class Routing {
   }
 
   public static function run ($url) {
+      error_log("Wywołano Routing z URL: " . $url);
       $urlParts = explode("/",$url);
       $action = $urlParts[0];
     if (!array_key_exists($action, self::$routes)) {

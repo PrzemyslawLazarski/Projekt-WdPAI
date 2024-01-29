@@ -18,7 +18,7 @@ Routing::get('profile', 'DefaultController');
 Routing::get('adminPanel', 'QuizController');
 Routing::get('quizzes', 'QuizController');
 Routing::get('discover', 'QuizController');
-Routing::post('getQuestionsForQuiz', 'QuizController');
+Routing::get('getQuestionsForQuiz', 'QuizController');
 
 
 Routing::post('login', 'SecurityController');

@@ -21,7 +21,7 @@ include_once __DIR__ .'/../../src/repository/QuizRepository.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
 
-    <script type="text/javascript" src="/public/js/questions.js" defer></script>
+
     <script type="text/javascript" src="/public/js/quiz.js" defer></script>
 </head>
 <body>
