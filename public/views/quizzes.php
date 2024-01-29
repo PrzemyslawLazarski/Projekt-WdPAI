@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="public/css/myquizzes.css">
     <script type="text/javascript" src="./public/js/search.js" defer></script>
     <title>My Quizzes</title>
@@ -30,13 +30,14 @@ if (!isset($_SESSION['user_id'])) {
                 <a href="dashboard"><img src="public/img/logowhite.svg"></a>
             </div>
             <div class="links">
-                <a href="dashboard">Home</a></br>
-                <a href="quizzes">My Quizzes</a></br>
-                <a href="discover">Discover</a></br>
+                <a href="dashboard"><i class="fas fa-home"></i>  Home</a></br></br>
+                <a href="quizzes"><i class="fas fa-puzzle-piece"></i>  My Quizzes</a></br></br>
+                <a href="discover"><i class="fas fa-compass"></i>  Discover</a></br></br>
                 <?php if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1): ?>
-                    <a href="adminPanel">Admin Panel</a></br>
+                    <a href="adminPanel"><i class="fas fa-user-shield"></i>Admin Panel</a>                                                                                                  </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
                 <?php endif; ?>
-                <a href="/logout">Log Out</a>
+
+                <a class="logout-button" href="/logout"><i class="fas fa-sign-out-alt"></i>  Log Out</a>
             </div>
             
         </div>
@@ -65,7 +66,7 @@ if (!isset($_SESSION['user_id'])) {
 
                             <a href="quiz?quiz_id=<?= $quiz->getId(); ?>">PLAY</a>
 
-                    <img width="200px" height="200px" src="public/uploads/<?=$quiz->getImage() ?>">
+                    <img  src="public/uploads/<?=$quiz->getImage() ?>">
                     <h2><?= $quiz->getTitle() ?></h2>
                     <p><?= $quiz->getDescription() ?></p>
 

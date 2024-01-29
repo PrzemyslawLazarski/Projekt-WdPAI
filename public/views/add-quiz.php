@@ -17,11 +17,12 @@ if (!isset($_SESSION['user_id'])) {
         var questionNumber = container.getElementsByClassName("question").length;
         var questionDiv = document.createElement("div");
         questionDiv.className = "question";
-        var innerHTML = '<input name="questions[]" type="text" placeholder="Pytanie ' + (questionNumber + 1) + '"><br>';
+        var innerHTML = '<input name="questions[]" type="text" placeholder="Question ' + (questionNumber + 1) + '"><br>';
 
         for (var i = 0; i < 4; i++) {
-            innerHTML += '<input name="answers[]" type="text" placeholder="Odpowiedź"><input type="radio" name="correct_answer[' + questionNumber + ']" value="' + i + '"><br>';
+            innerHTML += '<div class="answer"><input name="answers[]" type="text" placeholder="Answer"><input type="radio" name="correct_answer[' + questionNumber + ']" value="' + i + '"></div>';
         }
+
 
         questionDiv.innerHTML = innerHTML;
         container.appendChild(questionDiv);
@@ -71,26 +72,52 @@ if (!isset($_SESSION['user_id'])) {
                         }
                         ?>
                     </div>
-                    <input name="title" type="text" placeholder="title">
-                    <textarea name="description" rows=5 placeholder="description"></textarea>
-                    <input type="file" name="file"/><br/>
-
-                    <div id="questions-container">
-                        <h6>Pytania</h6>
-                        <div class="question">
-                            <input name="questions[]" type="text" placeholder="Pytanie 1">
-                            <input name="answers[]" type="text" placeholder="Odpowiedź"><input type="radio" name="correct_answer[0]" value="0"><br>
-                            <input name="answers[]" type="text" placeholder="Odpowiedź"><input type="radio" name="correct_answer[0]" value="1"><br>
-                            <input name="answers[]" type="text" placeholder="Odpowiedź"><input type="radio" name="correct_answer[0]" value="2"><br>
-                            <input name="answers[]" type="text" placeholder="Odpowiedź"><input type="radio" name="correct_answer[0]" value="3"><br>
-
-
+                    <div class="header">
+                        <div class="quiz-header">
+                            Quiz
+                        </div>
+                        <div class="template-header">
+                            Questions
                         </div>
                     </div>
 
-                    <button type="button" onclick="addQuestion()">Dodaj pytanie</button>
 
-                    <button type="submit">send</button>
+                    <div class="quiz">
+                        <div class="template-container">
+
+                            <input name="title" type="text" placeholder="title">
+                            <textarea name="description" rows=5 placeholder="description"></textarea>
+                            <input type="file" name="file"/><br/>
+                        </div>
+                        <div id="questions-container">
+
+                            <div class="question">
+                                <input name="questions[]" type="text" placeholder="Question 1">
+
+                                <div class="answer">
+                                    <input name="answers[]" type="text" placeholder="Answer">
+                                    <input type="radio" name="correct_answer[0]" value="0">
+                                </div>
+                                <div class="answer">
+                                    <input name="answers[]" type="text" placeholder="Answer">
+                                    <input type="radio" name="correct_answer[0]" value="1">
+                                </div>
+                                <div class="answer">
+                                    <input name="answers[]" type="text" placeholder="Answer">
+                                    <input type="radio" name="correct_answer[0]" value="2">
+                                </div>
+                                <div class="answer">
+                                    <input name="answers[]" type="text" placeholder="Answer">
+                                    <input type="radio" name="correct_answer[0]" value="3">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="addQuestion()">Add question</button>
+
+                    <button type="submit">Send</button>
                 </form>
             </section>
         </div>

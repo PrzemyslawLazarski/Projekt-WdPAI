@@ -18,8 +18,9 @@ body{
 
 .logo 
 {
-margin-right: 2vw;
-    
+
+margin-left: 1.5vw;
+
 }
 
 
@@ -31,7 +32,7 @@ margin-right: 2vw;
     background:#FCC822;
     width:18vw;
 height:100vh;
-    text-align: center;
+    text-align: left;
 }
 
 .menu a{
@@ -41,11 +42,21 @@ height:100vh;
     text-decoration: none;
     color: black;
     font-size: 1.7em;
+
+
+}
+.logout-button
+{
+margin-top: 30vh;
 }
 .menu a:hover{
 
     color: #ECECE8;
 
+}
+.links
+{
+    margin-left:4vw;
 }
 .board
 {
@@ -87,6 +98,7 @@ margin-left:1vw;
     color: #FCC822;
     text-decoration: none;
     border:0.1vw solid #FCC822;
+    margin-top: 2vh;
 
 }
 .Add:hover{
@@ -193,4 +205,162 @@ textarea {
     padding: 1em;
     margin: 1em;
     width: 50%;
+}
+
+
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3vw;
+
+    padding: 1vw;
+}
+
+.projects div {
+    background: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 15vw;
+}
+
+.projects div img {
+    width: 100%;
+    height: 60%;
+    display: block;
+}
+
+.projects div a {
+    display: inline-block;
+    background: #FCC822;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.projects div a:hover {
+    background: linear-gradient(95deg, white 0%, white 100%);
+    color: #FCC822;
+    box-shadow: 0px 0.1vw 2.5vh -0.2vw #FBE18F;
+    transition: all 0.3s ease;
+
+}
+
+.projects h2 {
+    margin: 10px;
+    font-size: 1.5em;
+}
+
+.projects p {
+    margin: 10px;
+    color: #333;
+}
+
+.project-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    width:60vw;
+    margin: auto;
+    font-size:0.5em;
+}
+
+.project-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-form input[type="text"],
+.project-form textarea,
+.project-form input[type="file"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.quiz
+{
+    display:flex;
+    flex-direction: row;
+    width:50vw;
+}
+.project-form textarea {
+
+}
+
+.project-form .messages {
+    color: red;
+    margin-bottom: 15px;
+}
+
+.project-form .question {
+
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+
+}
+
+.project-form .question input[type="text"] {
+    margin: 5px 0;
+    width:15vw;
+}
+
+.project-form .question input[type="radio"] {
+   width:20px;
+}
+
+
+.project-form button {
+    background-color: #FCC822;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+
+.question {
+    margin-bottom: 20px; /* Odstęp między pytaniami */
+
+}
+
+.answer {
+    display: flex; /* Ustawia elementy w linii */
+    align-items: center; /* Wyrównuje elementy wertykalnie */
+    margin-bottom: 10px; /* Odstęp między odpowiedziami */
+}
+
+.answer input[type="text"] {
+
+    margin-right: 10px; /* Odstęp między polem tekstowym a przyciskiem radio */
+}
+.template-container
+{
+    width:40vw;
+}
+#questions-container
+{
+    width:30vw;
+}
+.header
+{
+    display: flex;
+    flex-direction: row;
+}
+.template-header
+{
+   margin-left:24vw;
+}
+.quiz-header
+{
+    margin-left:5vw;
 }
