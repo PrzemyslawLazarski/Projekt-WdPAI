@@ -8,15 +8,7 @@ if (!isset($_SESSION['user_id'])) {
     return;
 }
 ?>
-<?php
-// Krok 1: Importowanie i inicjalizacja
-include_once __DIR__ .'/../../src/repository/QuizRepository.php';
-$quizRepo = new QuizRepository();
 
-// Krok 2: Pobieranie pytań dla określonego quizu
-$quizId = 132; // Tutaj możesz ustawić stałe ID lub pobrać je z żądania, np. z $_GET['id']
-$questions = $quizRepo->getQuestionsForQuiz($quizId);
-?>
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,16 +64,7 @@ $questions = $quizRepo->getQuestionsForQuiz($quizId);
                 }
                 ?>
             </div>
-<div>
-    <?php foreach ($questions as $question):
-            echo " pytanie: ".$question['question_text']." odp: ";
-               foreach ($question['answers'] as $answer):
-                     echo $answer['answer_text']." ";
-                endforeach;
 
-
-     endforeach; ?>
-</div>
 
             <div class="session">
                 <?php

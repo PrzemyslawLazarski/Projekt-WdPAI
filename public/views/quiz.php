@@ -8,7 +8,8 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: {$url}/login");
     return;
 }
-//$quizId = isset($_GET['quiz_id']) ? $_GET['quiz_id'] : null;
+
+include_once __DIR__ .'/../../src/repository/QuizRepository.php';
 
 ?>
 
@@ -28,12 +29,28 @@ if (!isset($_SESSION['user_id'])) {
     <div class="start_btn"><button>Start Quiz</button></div>
     <div class="go-dashboard"><a href="quizzes">Go back to Quizzes</a></div>
 
+<div>
+    <?php
 
+    $quizRepo = new QuizRepository();
+    $quizId = isset($_GET['quiz_id']) ? $_GET['quiz_id'] : null;
+    $questions = $quizRepo->getQuestionsForQuiz($quizId);
+
+
+    foreach ($questions as $question):
+        echo " pytanie: ".$question['question_text']." odp: ";
+        foreach ($question['answers'] as $answer):
+            echo $answer['answer_text']." ";
+        endforeach;
+
+
+    endforeach; ?>
+</div>
 
     <!-- Quiz Box -->
     <div class="quiz_box">
         <header>
-            <div class="title">TITLE</div>
+            <div class="title"><?php echo "quizID= ".$quizId ?></div>
 
         </header>
         <section>

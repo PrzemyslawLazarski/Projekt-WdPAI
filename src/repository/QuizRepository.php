@@ -108,36 +108,7 @@ class QuizRepository extends Repository
 
 
     }
-    public function getQuestionsForQuiz($quizId): array {
-        $questions = [];
-        $pdo = $this->database->connect();
 
-        $stmt = $pdo->prepare("
-        SELECT q.id, q.question_text, a.id as answer_id, a.answer_text, a.is_correct
-        FROM questions q
-        JOIN answers a ON q.id = a.question_id
-        WHERE q.quiz_id = ?
-        ORDER BY q.id, a.id
-    ");
-        $stmt->execute([$quizId]);
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            if (!isset($questions[$row['id']])) {
-                $questions[$row['id']] = [
-                    'question_text' => $row['question_text'],
-                    'answers' => []
-                ];
-            }
-
-            $questions[$row['id']]['answers'][] = [
-                'answer_id' => $row['answer_id'],
-                'answer_text' => $row['answer_text'],
-                'is_correct' => $row['is_correct']
-            ];
-        }
-
-        return array_values($questions);
-    }
 
 
     public function getQuizzes(): array
@@ -216,14 +187,8 @@ class QuizRepository extends Repository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 /*
-    function getQuizById($quizId) {
-        // Sprawdzamy, czy $quizId jest liczbą, aby uniknąć SQL Injection
-        if (!is_numeric($quizId)) {
-            return null; // Możesz również rzucać wyjątek lub obsługiwać błąd inaczej
-        }
+    function getQuizById(int $quizId) {
 
-        try {
-            // Przygotowanie zapytania SQL
             $stmt = $this->database->connect()->prepare("SELECT * FROM quizzes WHERE id = :quizId");
             $stmt->bindParam(':quizId', $quizId, PDO::PARAM_INT);
 
@@ -235,12 +200,10 @@ class QuizRepository extends Repository
 
             return $quiz;
 
-        } catch (PDOException $e) {
-            // Obsługa błędów połączenia lub zapytania
-            die("Wystąpił błąd przy pobieraniu quizu: " . $e->getMessage());
-        }
+
     }
 */
+
     public function deleteQuizByTitle(string $searchString)
     {
 
@@ -254,7 +217,7 @@ class QuizRepository extends Repository
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
+/*
     public function getQuizQuestions($quizId) {
         $stmt = $this->database->connect()->prepare("
         SELECT q.id AS question_id, q.question_text, a.id AS answer_id, a.answer_text, a.is_correct
@@ -288,6 +251,37 @@ class QuizRepository extends Repository
         }
 
         return $questions;
+    }
+*/
+    public function getQuestionsForQuiz($quizId): array {
+        $questions = [];
+        $pdo = $this->database->connect();
+
+        $stmt = $pdo->prepare("
+        SELECT q.id, q.question_text, a.id as answer_id, a.answer_text, a.is_correct
+        FROM questions q
+        JOIN answers a ON q.id = a.question_id
+        WHERE q.quiz_id = ?
+        ORDER BY q.id, a.id
+    ");
+        $stmt->execute([$quizId]);
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            if (!isset($questions[$row['id']])) {
+                $questions[$row['id']] = [
+                    'question_text' => $row['question_text'],
+                    'answers' => []
+                ];
+            }
+
+            $questions[$row['id']]['answers'][] = [
+                'answer_id' => $row['answer_id'],
+                'answer_text' => $row['answer_text'],
+                'is_correct' => $row['is_correct']
+            ];
+        }
+
+        return array_values($questions);
     }
 
 }

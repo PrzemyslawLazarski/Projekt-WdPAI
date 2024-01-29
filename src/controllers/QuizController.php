@@ -39,13 +39,23 @@ class QuizController extends AppController {
         $this->render('adminPanel',['quizzes' => $adminPanel]);
 
     }
-    /*
-    public function getQuizById($quizId)
+
+    public function getQuestionsForQuiz($quizId)
     {
-        $quiz = $this->quizRepository->getQuizById($quizId);
-        $this->render('quiz',['quiz' => $quiz]);
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            echo json_encode($this->quizRepository->getQuestionsForQuiz($quizId));
+        }
     }
-    */
+
     public function addQuiz()
     {
 
