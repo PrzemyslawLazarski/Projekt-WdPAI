@@ -1,15 +1,12 @@
-
 <!DOCTYPE html>
 
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    $url = "http://$_SERVER[HTTP_HOST]";
-    header("Location: {$url}/login");
-    return;
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
+        return;
 }
-
-include_once __DIR__ .'/../../src/repository/QuizRepository.php';
 
 ?>
 
@@ -20,78 +17,39 @@ include_once __DIR__ .'/../../src/repository/QuizRepository.php';
     <link rel="stylesheet" href="public/css/quiz.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
-
-
     <script type="text/javascript" src="/public/js/quiz.js" defer></script>
 </head>
 <body>
-    <!-- start Quiz button -->
     <div class="start_btn"><button>Start Quiz</button></div>
     <div class="go-dashboard"><a href="quizzes">Go back to Quizzes</a></div>
-
 <div>
-    <?php
-
-    $quizRepo = new QuizRepository();
-    $quizId = isset($_GET['quiz_id']) ? $_GET['quiz_id'] : null;
-    $questions = $quizRepo->getQuestionsForQuiz($quizId);
-
-
-    foreach ($questions as $question):
-        echo " pytanie: ".$question['question_text']." odp: ";
-        foreach ($question['answers'] as $answer):
-            echo $answer['answer_text']." ";
-        endforeach;
-
-
-    endforeach; ?>
 </div>
 
     <!-- Quiz Box -->
     <div class="quiz_box">
         <header>
-            <div class="title"><?php echo "quizID= ".$quizId ?></div>
-
+            <div class="title"></div>
         </header>
         <section>
-            <div class="que_text">
-
-            </div>
-            <div class="option_list">
-
-            </div>
+            <div class="que_text"></div>
+            <div class="option_list"></div>
         </section>
-
-
         <footer>
-            <div class="total_que">
-
-            </div>
-            <div class="timer">
-                <div class="time_left_txt">Time Left</div>
-                <div class="timer_sec">15</div>
-            </div>
+            <div class="total_que"></div>
             <button class="next_btn">Next</button>
         </footer>
     </div>
-
     <!-- Result Box -->
     <div class="result_box">
         <div class="icon">
             <img src="public/img/score.svg">
             <div class="complete_text">Your score:</div>
-            <div class="score_text">
-
+            <div class="score_text"></div>
         </div>
-        </div>
-        
         <div class="buttons">
             <button class="restart">Replay Quiz</button>
             <button class="quit">Complete</button>
         </div>
     </div>
-
-
-
 </body>
 </html>

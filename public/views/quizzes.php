@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    $url = "http://$_SERVER[HTTP_HOST]";
-    header("Location: {$url}/login");
-    return;
-}
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
+        return;
+    }
 ?>
 
 <head>
@@ -30,30 +30,24 @@ if (!isset($_SESSION['user_id'])) {
                 <a href="dashboard"><img src="public/img/logowhite.svg"></a>
             </div>
             <div class="links">
-                <a href="dashboard"><i class="fas fa-home"></i>  Home</a></br></br>
-                <a href="quizzes"><i class="fas fa-puzzle-piece"></i>  My Quizzes</a></br></br>
-                <a href="discover"><i class="fas fa-compass"></i>  Discover</a></br></br>
+                <a class="menu-button" href="dashboard"><i class="fas fa-home"></i>  Home</a></br></br>
+                <a class="menu-button" href="quizzes"><i class="fas fa-puzzle-piece"></i>  My Quizzes</a></br></br>
+                <a class="menu-button" href="discover"><i class="fas fa-compass"></i>  Discover</a></br></br>
                 <?php if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1): ?>
-                    <a href="adminPanel"><i class="fas fa-user-shield"></i>Admin Panel</a>                                                                                                  </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+                    <a class="menu-button" href="adminPanel"><i class="fas fa-user-shield"></i>Admin Panel</a><br></br>
                 <?php endif; ?>
-
                 <a class="logout-button" href="/logout"><i class="fas fa-sign-out-alt"></i>  Log Out</a>
             </div>
-            
         </div>
         <div class="right">
             <div class="board">
-
                     My Quizzes
-
-
                 <div class="separator"></div>
                 <header>
-
                 <div class="search-bar">
                         <input placeholder="search quiz">
                 </div>
-                    <a href="addQuiz">
+                    <a href="validateQuiz">
                     <div class="Add">
                         Add
                     </div>
@@ -61,36 +55,24 @@ if (!isset($_SESSION['user_id'])) {
                 </header>
                 <section class="projects">
                     <?php foreach($quizzes as $quiz): ?>
-
                         <div id="<?= $quiz->getId(); ?>">
-
                             <a href="quiz?quiz_id=<?= $quiz->getId(); ?>">PLAY</a>
-
                     <img  src="public/uploads/<?=$quiz->getImage() ?>">
                     <h2><?= $quiz->getTitle() ?></h2>
                     <p><?= $quiz->getDescription() ?></p>
-
                 </div>
-
                    <?php endforeach; ?>
                 </section>
             </div>
-           
         </div>
-            
-        
     </div>
 </body>
 
 <template id="quiz-template">
-
     <div >
-
-        <a href="quiz">PLAY</a>
+        <a href="quiz?quiz_id=<?= $quiz->getId(); ?>">PLAY</a>
         <img width="200px" height="200px" src="">
         <h2>title</h2>
         <p>description</p>
-
     </div>
-
 </template>

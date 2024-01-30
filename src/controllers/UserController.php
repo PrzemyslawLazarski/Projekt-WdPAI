@@ -16,10 +16,8 @@ class UserController extends AppController {
         $this->userRepository = new UserRepository();
     }
 
-
     public function addUser()
     {
-
 
         $nickname = $_POST['nickname'];
         $email = $_POST['email'];
@@ -41,9 +39,6 @@ class UserController extends AppController {
         {
             return $this->render('register', ['messages' => $this->message]);
         }
-
-
-
     }
 
     private function validate($nickname,$email,$password,$confirmedPassword): bool

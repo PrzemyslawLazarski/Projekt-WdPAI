@@ -5,7 +5,6 @@ require_once __DIR__.'/../models/User.php';
 
 class UserRepository extends Repository
 {
-
     public function getUser(string $email): ?User
     {
         $stmt = $this->database->connect()->prepare('
@@ -13,7 +12,6 @@ class UserRepository extends Repository
         ');
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
-
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user == false) {
@@ -25,8 +23,6 @@ class UserRepository extends Repository
             $user['email'],
             $user['password']
 
-
-
         );
     }
     public function getNicknameById($userId) {
@@ -35,7 +31,6 @@ class UserRepository extends Repository
     ');
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
-
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         return $user ? $user['nickname'] : null;
     }

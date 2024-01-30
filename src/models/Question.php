@@ -2,7 +2,7 @@
 
 class Question {
     private $questionText;
-    private $answers; // Lista odpowiedzi
+    private $answers;
 
     public function __construct($questionText, $answers) {
         $this->questionText = $questionText;

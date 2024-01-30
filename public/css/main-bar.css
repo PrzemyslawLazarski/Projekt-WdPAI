@@ -19,10 +19,7 @@ body{
 .logo 
 {
     margin-left: 2vw;
-    
-    /*  margin-right: 45vw; Dodatkowy margines między logo a linkami */
 }
-
 
 .bar
 {
@@ -31,7 +28,6 @@ body{
     margin: 0;
     padding: 0;
     height:10vh;
-    
 }
 .bar-buttons
 {
@@ -46,21 +42,19 @@ body{
     font-weight: 400;
     line-height: normal;
     text-decoration: none;
-    margin-right: 4vw; /* Dodatkowy margines między linkami */
+    margin-right: 4vw;
 }
 
 .bar a:visited
 {
     color: #E0E0E0;
     text-decoration: none;
-
 }
 
 .login-button 
 {
     margin-top: 2.5vh;
     margin-right: 7.6vw;
-    /* Odsunięcie od lewej strony */
 }
 
 .login-button a {
@@ -72,19 +66,17 @@ body{
     background-color: #ffffff;
     color: #FCC822;
     text-decoration: none;
-
     border:0.1vw solid #FCC822;
 }
 
 .separator 
 {
     width: 80vw;
-    height: 0.1vh; /* Grubość linii */
-    background-color: #ECECE8; /* Kolor linii */
-    margin-bottom: 2vh; /* Odstęp między linią a divem motto */
+    height: 0.1vh;
+    background-color: #ECECE8;
+    margin-bottom: 2vh;
     margin-right: 11vw;
     margin-left: 2vw;;
-
 }
 
 .header 
@@ -97,7 +89,7 @@ body{
 .vertical-content 
 {
     display: flex;
-    flex-direction: column; /* Rozmieszczanie elementów w kolumnie */
+    flex-direction: column;
     width:40vw;
 
 }
@@ -105,8 +97,7 @@ body{
 .row-content 
 {
     display: flex;
-    flex-direction: row; /* Rozmieszczanie elementów w kolumnie */
- 
+    flex-direction: row;
 }
 
 .motto
@@ -157,7 +148,6 @@ body{
 }
 
 
-
 .login-button>a:hover{
     background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
     color: white;
@@ -180,7 +170,6 @@ body{
     color: #FCC822;
     text-decoration: none;
     border-radius: 0.1vh;
-    
 }
 
 .image 
@@ -192,8 +181,7 @@ body{
 
 .image img 
 {
-    max-width: 100%; /* Obraz dostosuje się do szerokości rodzica */
-
+    max-width: 100%;
 }
 .smaller-image
 {

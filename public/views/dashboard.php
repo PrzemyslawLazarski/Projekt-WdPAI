@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    $url = "http://$_SERVER[HTTP_HOST]";
-    header("Location: {$url}/login");
-    return;
-}
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
+        return;
+    }
 ?>
 
 <head>
@@ -17,17 +17,12 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
     <link rel="stylesheet" type="text/css" href="public/css/myquizzes.css">
     <title>Dashboard</title>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
-
-
 </head>
 
 <body>
-
-
     <div class="container">
         <div class="menu">
             <div class="logo">
@@ -38,12 +33,10 @@ if (!isset($_SESSION['user_id'])) {
                 <a href="quizzes"><i class="fas fa-puzzle-piece"></i>  My Quizzes</a></br></br>
                 <a href="discover"><i class="fas fa-compass"></i>  Discover</a></br></br>
                 <?php if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1): ?>
-                    <a href="adminPanel"><i class="fas fa-user-shield"></i>Admin Panel</a>                                                                                                  </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+                    <a href="adminPanel"><i class="fas fa-user-shield"></i>Admin Panel</a></br></br>
                 <?php endif; ?>
-
                 <a class="logout-button" href="/logout"><i class="fas fa-sign-out-alt"></i>  Log Out</a>
             </div>
-
         </div>
         <div class="board">
             Home
@@ -58,33 +51,26 @@ if (!isset($_SESSION['user_id'])) {
                 if (isset($_SESSION['user_id'])) {
                     $nickname = $userRepository->getNicknameById($_SESSION['user_id']);
                     echo "Hello ". $nickname."!";
-
                 } else {
                     echo "Użytkownik niezalogowany.";
                 }
                 ?>
             </div>
-
-
             <div class="session">
                 <?php
-                session_start();
-                echo "Session of user with ID: ".($_SESSION['user_id']);
-                if($_SESSION['role_id']==1)
-                {
-                    echo "<br>Admin";
-                }
-                else
-                {
-                    echo"<br>User";
-                }
-
-
+                    session_start();
+                    echo "Session of user with ID: ".($_SESSION['user_id']);
+                    if($_SESSION['role_id']==1)
+                    {
+                        echo "<br>Admin";
+                    }
+                    else
+                    {
+                        echo"<br>User";
+                    }
                 ?>
             </div>
         </div>
-            
-        
     </div>
 </body>
 

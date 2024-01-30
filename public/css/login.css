@@ -71,13 +71,8 @@ input[type=text] {
     font-weight: 500;
     line-height: normal;
 
-
 }
-input:hover
-{
-    border-left: 0.4vw solid #FCC822;
 
-}
 .right
 {
     width:50vw;
@@ -151,7 +146,6 @@ label
     width:7.5vw;
     cursor: pointer;
 
-
 }
 .login-button:hover{
     background: linear-gradient(95deg, white 0%, white 100%);
@@ -179,7 +173,6 @@ label
     cursor: pointer;
     width:4.5vw;
     display: flex;
-
 
 }
 .sign-up-button:hover,.go-back-button>a:hover{

@@ -30,7 +30,6 @@ class QuizRepository extends Repository
             $quiz['image'],
             $quiz['questions']
 
-
         );
     }
     public function addQuiz(Quiz $quiz): int {
@@ -39,13 +38,10 @@ class QuizRepository extends Repository
             $date = new DateTime();
             $userId = $_SESSION['user_id'];
 
-            // Uzyskaj połączenie PDO
             $pdo = $this->database->connect();
 
-            // Rozpocznij transakcję
             $pdo->beginTransaction();
 
-            // Dodaj quiz
             $stmtQuiz = $pdo->prepare("
             INSERT INTO quizzes (title, description, created_at, id_assigned_by, image)
             VALUES (?, ?, ?, ?, ?)
@@ -54,15 +50,13 @@ class QuizRepository extends Repository
             $stmtQuiz->execute([
                 $quiz->getTitle(),
                 $quiz->getDescription(),
-                $date->format('Y-m-d'),
+                $date->format('Y-m-d H:i:s'),
                 $userId,
                 $quiz->getImage()
             ]);
 
-            // Pobierz ID dodanego quizu
             $quizId = $pdo->lastInsertId();
 
-            // Dodaj pytania
             foreach ($quiz->getQuestions() as $question) {
                 $stmtQuestion = $pdo->prepare("
                 INSERT INTO questions (quiz_id, question_text)
@@ -71,10 +65,8 @@ class QuizRepository extends Repository
 
                 $stmtQuestion->execute([$quizId, $question->getQuestionText()]);
 
-                // Pobierz ID dodanego pytania
                 $questionId = $pdo->lastInsertId();
 
-                // Dodaj odpowiedzi
                 foreach ($question->getAnswers() as $answer) {
                     $stmtAnswer = $pdo->prepare("
                     INSERT INTO answers (question_id, answer_text, is_correct)
@@ -86,14 +78,12 @@ class QuizRepository extends Repository
                 }
             }
 
-            // Zakończ transakcję
             $pdo->commit();
 
             return (int)$quizId;
         } catch (Exception $e) {
-            // W razie wystąpienia błędu, cofnij transakcję
             $pdo->rollBack();
-            throw $e; // Przekaż błąd do wyższego poziomu
+            throw $e;
         }
     }
 
@@ -106,7 +96,6 @@ class QuizRepository extends Repository
 
         $stmt->execute([$quizId]);
 
-
     }
 
 
@@ -115,7 +104,7 @@ class QuizRepository extends Repository
     {
         $result = [];
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM quizzes
+            SELECT * FROM quizzes ORDER BY created_at DESC
         ');
 
         $stmt->execute();
@@ -148,7 +137,7 @@ class QuizRepository extends Repository
 
         $result = [];
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM quizzes WHERE id_assigned_by = :userId
+            SELECT * FROM quizzes WHERE id_assigned_by = :userId ORDER BY created_at DESC
         ');
 
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
@@ -167,7 +156,6 @@ class QuizRepository extends Repository
                 $quiz['id']
 
 
-
             );
 
         }
@@ -176,83 +164,41 @@ class QuizRepository extends Repository
     }
     public function getQuizByTitle(string $searchString)
     {
+        session_start();
         $searchString = '%' . strtolower($searchString) . '%';
+        $userId = $_SESSION['user_id'];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM quizzes WHERE LOWER(title) LIKE :search OR LOWER(description) LIKE :search
-        ');
+        SELECT * FROM quizzes WHERE id_assigned_by = :userId AND ((LOWER(title) LIKE :search OR LOWER(description) LIKE :search))
+    ');
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT); // Dodaj tę linię
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-/*
-    function getQuizById(int $quizId) {
 
-            $stmt = $this->database->connect()->prepare("SELECT * FROM quizzes WHERE id = :quizId");
-            $stmt->bindParam(':quizId', $quizId, PDO::PARAM_INT);
+    public function checkIfQuizExists(string $title): bool {
+        $pdo = $this->database->connect();
 
-            // Wykonanie zapytania
-            $stmt->execute();
+        $stmt = $pdo->prepare("SELECT COUNT(*) FROM quizzes WHERE title = ?");
+        $stmt->execute([$title]);
+        $count = $stmt->fetchColumn();
 
-            // Pobranie wyniku
-            $quiz = $stmt->fetch(PDO::FETCH_OBJ);
-
-            return $quiz;
-
-
+        return $count > 0;
     }
-*/
-
     public function deleteQuizByTitle(string $searchString)
     {
 
-
         $stmt = $this->database->connect()->prepare('
             DELETE FROM quizzes WHERE title LIKE :del
-
         ');
         $stmt->bindParam(':del', $searchString, PDO::PARAM_STR);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-/*
-    public function getQuizQuestions($quizId) {
-        $stmt = $this->database->connect()->prepare("
-        SELECT q.id AS question_id, q.question_text, a.id AS answer_id, a.answer_text, a.is_correct
-        FROM questions q
-        JOIN answers a ON q.id = a.question_id
-        WHERE q.quiz_id = :quizId
-    ");
 
-        $stmt->bindParam(':quizId', $quizId, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        // Organizujemy dane w strukturę, którą łatwo będzie przetworzyć w kodzie JavaScript
-        $questions = [];
-        foreach ($result as $row) {
-            $questionId = $row['question_id'];
-
-            if (!isset($questions[$questionId])) {
-                $questions[$questionId] = [
-                    'question_text' => $row['question_text'],
-                    'answers' => []
-                ];
-            }
-
-            $questions[$questionId]['answers'][] = [
-                'answer_id' => $row['answer_id'],
-                'answer_text' => $row['answer_text'],
-                'is_correct' => $row['is_correct']
-            ];
-        }
-
-        return $questions;
-    }
-*/
     public function getQuestionsForQuiz($quizId): array {
         $questions = [];
         $pdo = $this->database->connect();

@@ -19,16 +19,14 @@ Routing::get('adminPanel', 'QuizController');
 Routing::get('quizzes', 'QuizController');
 Routing::get('discover', 'QuizController');
 Routing::get('getQuestionsForQuiz', 'QuizController');
-
-
-Routing::post('login', 'SecurityController');
-Routing::post('addQuiz', 'QuizController');
-Routing::post('search', 'QuizController');
-Routing::post('delete', 'QuizController');
-
-
-Routing::post('addUser', 'UserController');
 Routing::get('logout', 'SecurityController');
 Routing::get('getQuizQuestions', 'QuizController');
+
+Routing::post('login', 'SecurityController');
+Routing::post('validateQuiz', 'QuizController');
+Routing::post('search', 'QuizController');
+Routing::post('delete', 'QuizController');
+Routing::post('deleteById', 'QuizController');
+Routing::post('addUser', 'UserController');
 
 Routing::run($path);

@@ -7,7 +7,7 @@ class Quiz {
     private $createdAt;
     private $idAssignedBy;
     private $image;
-    private $questions; // Lista pytań
+    private $questions;
 
 
     public function __construct($title, $description, $createdAt, $idAssignedBy, $image, $questions,$id=null) {

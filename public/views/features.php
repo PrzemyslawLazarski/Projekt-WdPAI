@@ -40,10 +40,8 @@
                    | Our Top Features
                 </div>
                 <div class="content">
-
                 Personalized Quizzes:<br>
                 Customize your experience! Create quizzes tailored to your interests and knowledge level.<br><br>
-                
 
                 Visual Appeal:<br>
                 Expect beautiful graphics and a clear design that will make quizzing not only educational.
@@ -61,8 +59,6 @@
                     <div class="start-button">
                         <a href="login">Start solving</a>
                     </div>
-                    
-                    
                 </div>
                 <div class="smaller-image">
                     <img src="public/img/smaller-lines.svg" alt="Large Image">
@@ -72,8 +68,6 @@
                     <img src="public/img/people1.svg" alt="Large Image">
                 </div>
         </div>
-        
-        
     </div>
 </body>
 

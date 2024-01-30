@@ -23,9 +23,7 @@
                 Please login/Signup to your account.
             </div>
             <div class="login-container">
-
                 <form class="login" action="login" method="POST">
-
                     <div class="messages">
                         <?php 
                         if(isset($messages)){
@@ -35,16 +33,12 @@
                             }
                         }
                         ?>
-
                     </div>
                     <input name="email"  type="text" placeholder="Email Address"></br>
                     <input name="password" type="password" placeholder="Password"></br>
-                    <input type="checkbox" id="remember-me" name="remember-me" value="Remember Me">
-                    <label for="remember-me">Remember Me</label>
-                    <a class="forgot-password" href="#">Forgot Password?</a></br>
                     <div class="log">
-                    <button type="submit" class="login-button">Login</button>
-                    <a href="register" class="sign-up-button">Sign up</a>
+                        <button type="submit" class="login-button">Login</button>
+                        <a href="register" class="sign-up-button">Sign up</a>
                     </div>
                 </form>
                 <div class="alt-login">
@@ -57,10 +51,7 @@
                     <div class="google">
                         <a href="#">Google</a>
                     </div>
-                    
-                    
                 </div>
-                
             </div>
         </div>
         <div class="right">
@@ -70,8 +61,6 @@
             <div class="go-back-button">
                 <a href="main">Go back</a>
             </div>
-            
         </div>
-        
     </div>
 </body>

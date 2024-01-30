@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" type="text/css" href="public/css/main.css">
     <title>Main</title>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
@@ -47,7 +46,6 @@
                     <div class="knowmore-button">
                         <a href="howitworks">Know more</a>
                     </div>
-                    
                 </div>
                 <div class="smaller-image">
                     <img src="public/img/smaller-lines.svg" alt="small Image">
@@ -57,8 +55,6 @@
                     <img src="public/img/people1.svg" alt="Large Image">
                 </div>
         </div>
-        
-        
     </div>
 </body>
 

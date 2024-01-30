@@ -1,4 +1,4 @@
-/* importing google fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
     margin: 0;
@@ -23,7 +23,6 @@ body{
                 0 0.3vw 0.6vw 0 rgba(0, 0, 0, 0.19);
 }
 
-
 .quiz_box.activeQuiz,
 .result_box.activeResult{
     opacity: 1;
@@ -38,7 +37,6 @@ body{
     color: #FCC822;
     padding: 1vw 2vw;
     outline: none;
- 
     cursor: pointer;
     border: 1px solid #FCC822;
     transition: all 0.3s ease;
@@ -48,14 +46,11 @@ body{
 }
 
 
-
-
-.start_btn button:hover{
+.start_btn button:hover,.go-dashboard a:hover{
     background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
     color: white;
     box-shadow: 0px 0.1vw 2.5vh -0.2vw #FBE18F;
 }
-
 
 
 .quiz_box{
@@ -240,8 +235,6 @@ footer button.show{
 }
 
 
-
-
 .quiz_box footer .timer .time_left_txt{
     font-weight: 400;
     font-size: 1.1em;
@@ -271,9 +264,6 @@ footer button.show{
     pointer-events: none;
     transition: all 0.3s ease;
 }
-
-
-    
 
 
 .result_box .icon{
@@ -333,13 +323,11 @@ footer button.show{
     
 }
 
-
 .buttons button:hover{
     background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
     color: white;
     box-shadow: 0px 0.1vw 2.5vh -0.2vw #FBE18F;
 }
-
 
 .go-dashboard a {
     display: block;
@@ -351,10 +339,15 @@ footer button.show{
     color: #FCC822;
     text-decoration: none;
     border:0.1vw solid #FCC822;
+    transition: all 0.3s ease;
 }
 .go-dashboard
 {
     margin-top: 2.5vh;
     margin-left: 2.5vw;
 
+}
+.result_box .score_text span
+{
+    font-size: 3em;
 }

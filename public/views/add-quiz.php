@@ -1,34 +1,14 @@
 <!DOCTYPE html>
 
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    $url = "http://$_SERVER[HTTP_HOST]";
-    header("Location: {$url}/login");
-    return;
-}
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
+        return;
+    }
 ?>
 
-
-<script>
-
-    function addQuestion() {
-        var container = document.getElementById("questions-container");
-        var questionNumber = container.getElementsByClassName("question").length;
-        var questionDiv = document.createElement("div");
-        questionDiv.className = "question";
-        var innerHTML = '<input name="questions[]" type="text" placeholder="Question ' + (questionNumber + 1) + '"><br>';
-
-        for (var i = 0; i < 4; i++) {
-            innerHTML += '<div class="answer"><input name="answers[]" type="text" placeholder="Answer"><input type="radio" name="correct_answer[' + questionNumber + ']" value="' + i + '"></div>';
-        }
-
-
-        questionDiv.innerHTML = innerHTML;
-        container.appendChild(questionDiv);
-    }
-
-</script>
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +16,10 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script type="text/javascript" src="/public/js/quiz.js" defer></script>
+    <script type="text/javascript" src="/public/js/addQuestion.js" defer></script>
+    <script type="text/javascript" src="/public/js/validateQuizForm.js" defer></script>
     <link rel="stylesheet" type="text/css" href="public/css/myquizzes.css">
     <title>AddQuiz</title>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
@@ -49,20 +32,21 @@ if (!isset($_SESSION['user_id'])) {
             <a href="dashboard"><img src="public/img/logowhite.svg"></a>
         </div>
         <div class="links">
-            <a href="dashboard">Home</a></br>
-            <a href="quizzes">My Quizzes</a></br>
-            <a href="discover">Discover</a></br>
-            <a href="#">Statistics</a></br>
-            <a href=/logout">Log Out</a>
+            <a href="dashboard"><i class="fas fa-home"></i>  Home</a></br></br>
+            <a href="quizzes"><i class="fas fa-puzzle-piece"></i>  My Quizzes</a></br></br>
+            <a href="discover"><i class="fas fa-compass"></i>  Discover</a></br></br>
+            <?php if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1): ?>
+            <a href="adminPanel"><i class="fas fa-user-shield"></i>Admin Panel</a></br></br>
+            <?php endif; ?>
+            <a class="logout-button" href="/logout"><i class="fas fa-sign-out-alt"></i>  Log Out</a>
         </div>
-
     </div>
     <div class="right">
         <div class="board">
             AddQuiz
             <div class="separator"></div>
             <section class="project-form">
-                <form action="addQuiz" method="POST" ENCTYPE="multipart/form-data">
+                <form action="validateQuiz" method="POST" ENCTYPE="multipart/form-data" onsubmit="return validateQuizForm()">
                     <div class="messages">
                         <?php
                         if(isset($messages)){
@@ -80,17 +64,15 @@ if (!isset($_SESSION['user_id'])) {
                             Questions
                         </div>
                     </div>
-
-
                     <div class="quiz">
                         <div class="template-container">
 
-                            <input name="title" type="text" placeholder="title">
-                            <textarea name="description" rows=5 placeholder="description"></textarea>
+                            <input name="title" type="text" placeholder="title" value="<?php echo htmlspecialchars($formData['title'] ?? '') ?>">
+                            <textarea name="description" rows=5 placeholder="description"><?php echo htmlspecialchars($formData['description'] ?? '') ?></textarea>
+
                             <input type="file" name="file"/><br/>
                         </div>
                         <div id="questions-container">
-
                             <div class="question">
                                 <input name="questions[]" type="text" placeholder="Question 1">
 
@@ -110,20 +92,16 @@ if (!isset($_SESSION['user_id'])) {
                                     <input name="answers[]" type="text" placeholder="Answer">
                                     <input type="radio" name="correct_answer[0]" value="3">
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
-                    <button type="button" onclick="addQuestion()">Add question</button>
-
-                    <button type="submit">Send</button>
+                    <div class="form-buttons">
+                        <button type="submit">Send</button>
+                        <button type="button" onclick="addQuestion()">Add question</button>
+                    </div>
                 </form>
             </section>
         </div>
-
     </div>
-
-
 </div>
 </body>

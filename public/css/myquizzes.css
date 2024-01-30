@@ -18,9 +18,7 @@ body{
 
 .logo 
 {
-
-margin-left: 1.5vw;
-
+    margin-left: 1.5vw;
 }
 
 
@@ -31,7 +29,7 @@ margin-left: 1.5vw;
     position: fixed;
     background:#FCC822;
     width:18vw;
-height:100vh;
+    height:100vh;
     text-align: left;
 }
 
@@ -43,11 +41,10 @@ height:100vh;
     color: black;
     font-size: 1.7em;
 
-
 }
 .logout-button
 {
-margin-top: 30vh;
+    margin-top: 30vh;
 }
 .menu a:hover{
 
@@ -58,27 +55,25 @@ margin-top: 30vh;
 {
     margin-left:4vw;
 }
+
 .board
 {
     margin-left: 20vw;
-font-size:4em;
+    font-size:4em;
     font-color:black;
-display: flex;
-flex-direction: column;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-padding:2vw;
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding:2vw;
 }
 
 .separator 
 {
-
-    height: 0.1vh; /* Grubość linii */
-    background-color: #ECECE8; /* Kolor linii */
-    margin-bottom: 2vh; /* Odstęp między linią a divem motto */
-
-
+    height: 0.1vh;
+    background-color: #ECECE8;
+    margin-bottom: 2vh;
 }
 
 .Add
@@ -88,7 +83,7 @@ padding:2vw;
     line-height: normal;
     color:#FCC822;
     font-size: 0.4em;
-margin-left:1vw;
+    margin-left:1vw;
     display: block;
     padding: 2vh;
     height: 4vh;
@@ -101,7 +96,8 @@ margin-left:1vw;
     margin-top: 2vh;
 
 }
-.Add:hover{
+.Add:hover
+{
     background: linear-gradient(95deg, #FCC822 0%, #FFCD2E 100%);
     color: white;
     box-shadow: 0px 0.1vw 2.5vh -0.2vw #FBE18F;
@@ -110,8 +106,9 @@ margin-left:1vw;
 {
     color: #FCC822;
 }
-a:link, a:visited {
-color:black;
+a:link, a:visited
+{
+    color:black;
     text-decoration: none;
 }
 
@@ -119,9 +116,7 @@ color:black;
 {
     display: flex;
     flex-direction: row;
-
     flex-wrap: wrap;
-
 }
 
 header
@@ -147,7 +142,6 @@ header
     border-radius: 6em;
 
 
-
 }
 .search-bar > input::placeholder,.delete-bar> input::placeholder
 {
@@ -166,7 +160,7 @@ header
 section>div>a
 {
     font-size: 1em;
-margin-left: 4vw;
+    margin-left: 4vw;
     font-color:black;
 
 }
@@ -207,8 +201,6 @@ textarea {
     width: 50%;
 }
 
-
-
 .projects {
     display: flex;
     flex-wrap: wrap;
@@ -223,6 +215,7 @@ textarea {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 15vw;
+    height:50vh;
 }
 
 .projects div img {
@@ -243,11 +236,17 @@ textarea {
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
-
+.projects div .delete{
+    background: #f1061d;
+}
+.projects div .delete:hover{
+    box-shadow: 0px 0.1vw 2.5vh -0.2vw #f1061d;
+    color:#f1061d;
+}
 .projects div a:hover {
     background: linear-gradient(95deg, white 0%, white 100%);
     color: #FCC822;
-    box-shadow: 0px 0.1vw 2.5vh -0.2vw #FBE18F;
+    box-shadow: 0px 0.1vw 2.5vh -0.2vw #FCC822;
     transition: all 0.3s ease;
 
 }
@@ -266,7 +265,7 @@ textarea {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
-    width:60vw;
+    width:50vw;
     margin: auto;
     font-size:0.5em;
 }
@@ -297,6 +296,7 @@ textarea {
 .project-form .messages {
     color: red;
     margin-bottom: 15px;
+    font-size:0.5em;
 }
 
 .project-form .question {
@@ -326,22 +326,39 @@ textarea {
     cursor: pointer;
     margin-right: 10px;
 }
+.project-form button
+{
+    margin-top:1vh;
+    width:20vw;
 
+}
+.form-buttons
+{
+    margin-left:5vw;
+}
+.project-form button:hover
+{
+    background: linear-gradient(95deg, white 0%, white 100%);
+    color: #FCC822;
+    box-shadow: 0.1px 0.1vw 2.5vh -0.2vw #FBE18F;
+    transition: all 0.3s ease;
+    border: 0.581px solid #FCC822;
 
+}
 .question {
-    margin-bottom: 20px; /* Odstęp między pytaniami */
+    margin-bottom: 20px;
 
 }
 
 .answer {
-    display: flex; /* Ustawia elementy w linii */
-    align-items: center; /* Wyrównuje elementy wertykalnie */
-    margin-bottom: 10px; /* Odstęp między odpowiedziami */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .answer input[type="text"] {
 
-    margin-right: 10px; /* Odstęp między polem tekstowym a przyciskiem radio */
+    margin-right: 10px;
 }
 .template-container
 {

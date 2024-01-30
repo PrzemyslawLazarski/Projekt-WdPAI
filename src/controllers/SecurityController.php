@@ -18,7 +18,6 @@ class SecurityController extends AppController {
 
         $email = $_POST['email'];
         $password = $_POST['password'];
-
         $user = $userRepository->getUser($email);
 
         if (!$user) {
@@ -33,15 +32,11 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
-
-
         $userId = $userRepository->getUserIdByEmail($email);
         $_SESSION['user_id'] = $userId;
 
         $roleId = $userRepository->getRoleIdByEmail($email);
         $_SESSION['role_id'] = $roleId;
-
-
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/dashboard");
@@ -52,7 +47,6 @@ class SecurityController extends AppController {
         session_start();
         unset($_SESSION['user_id']);
         session_destroy();
-
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/login");
     }
