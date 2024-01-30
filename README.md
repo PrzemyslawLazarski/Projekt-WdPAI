@@ -7,6 +7,7 @@
 - [Technologie](#technologie)
 - [Wymagania](#wymagania)
 - [Instalacja](#instalacja)
+- [Diagram ERD](#diagram-erd)
 - [Użycie](#użycie)
 - [Kontrybucja](#kontrybucja)
 - [Licencja](#licencja)
@@ -60,6 +61,10 @@ Uruchom aplikację
 ```bash
  docker-compose up
   ```
+
+## Diagram ERD
+![pgadminERD](https://github.com/PrzemyslawLazarski/Projekt-WdPAI/assets/101416668/9378bea9-2b7b-420c-ac36-6bdbb833c663)
+
 ## Użycie
 Main Page:
 ![main](https://github.com/PrzemyslawLazarski/Projekt-WdPAI/assets/101416668/ffd4a901-7b92-43c6-b269-c7e12b82ef1c)
