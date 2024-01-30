@@ -25,6 +25,7 @@ Routing::get('getQuizQuestions', 'QuizController');
 Routing::post('login', 'SecurityController');
 Routing::post('validateQuiz', 'QuizController');
 Routing::post('search', 'QuizController');
+Routing::post('searchDiscover', 'QuizController');
 Routing::post('delete', 'QuizController');
 Routing::post('deleteById', 'QuizController');
 Routing::post('addUser', 'UserController');

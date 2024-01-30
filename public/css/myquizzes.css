@@ -201,7 +201,7 @@ textarea {
     width: 50%;
 }
 
-.projects {
+.projects ,.discoverProjects{
     display: flex;
     flex-wrap: wrap;
     gap: 3vw;
@@ -209,7 +209,7 @@ textarea {
     padding: 1vw;
 }
 
-.projects div {
+.projects div,.discoverProjects div{
     background: #f5f5f5;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -218,13 +218,13 @@ textarea {
     height:50vh;
 }
 
-.projects div img {
+.projects div img ,.discoverProjects div img{
     width: 100%;
     height: 60%;
     display: block;
 }
 
-.projects div a {
+.projects div a ,.discoverProjects div a{
     display: inline-block;
     background: #FCC822;
     color: #fff;
@@ -243,7 +243,7 @@ textarea {
     box-shadow: 0px 0.1vw 2.5vh -0.2vw #f1061d;
     color:#f1061d;
 }
-.projects div a:hover {
+.projects div a:hover ,.discoverProjects div a:hover{
     background: linear-gradient(95deg, white 0%, white 100%);
     color: #FCC822;
     box-shadow: 0px 0.1vw 2.5vh -0.2vw #FCC822;
@@ -251,12 +251,12 @@ textarea {
 
 }
 
-.projects h2 {
+.projects h2,.discoverProjects h2 {
     margin: 10px;
     font-size: 1.5em;
 }
 
-.projects p {
+.projects p ,.discoverProjects p{
     margin: 10px;
     color: #333;
 }

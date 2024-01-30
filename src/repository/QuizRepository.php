@@ -7,31 +7,6 @@ require_once __DIR__.'/../models/Answer.php';
 
 class QuizRepository extends Repository
 {
-
-    public function getQuiz(int $id): ?Quiz
-    {
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM quiz WHERE id = :email
-        ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $quiz = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($quiz == false) {
-            return null;
-        }
-
-        return new Quiz(
-            $quiz['title'],
-            $quiz['description'],
-            $quiz['createdAt'],
-            $quiz['idAssignedBy'],
-            $quiz['image'],
-            $quiz['questions']
-
-        );
-    }
     public function addQuiz(Quiz $quiz): int {
         try {
             session_start();
@@ -171,7 +146,7 @@ class QuizRepository extends Repository
         $stmt = $this->database->connect()->prepare('
         SELECT * FROM quizzes WHERE id_assigned_by = :userId AND ((LOWER(title) LIKE :search OR LOWER(description) LIKE :search))
     ');
-        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT); // Dodaj tę linię
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
         $stmt->execute();
 
@@ -230,4 +205,18 @@ class QuizRepository extends Repository
         return array_values($questions);
     }
 
+
+    public function getQuizByTitleDiscover(string $searchString)
+    {
+        $searchString = '%' . strtolower($searchString) . '%';
+
+        $stmt = $this->database->connect()->prepare('
+        SELECT * FROM quizzes WHERE LOWER(title) LIKE :searchDiscover OR LOWER(description) LIKE :searchDiscover
+    ');
+
+        $stmt->bindParam(':searchDiscover', $searchString, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

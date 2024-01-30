@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="public/css/myquizzes.css">
-    <script type="text/javascript" src="./public/js/search.js" defer></script>
+    <script type="text/javascript" src="./public/js/searchDiscover.js" defer></script>
     <script type="text/javascript" src="./public/js/quiz.js" defer></script>
     <title>Discover</title>
     <link rel="shortcut icon" type="image/x-icon" href="public/img/small-logo.png" />
@@ -46,10 +46,10 @@
                 <div class="separator"></div>
                     <header>
                         <div class="search-bar">
-                            <input placeholder="search quiz">
+                            <input placeholder="search">
                         </div>
                     </header>
-                    <section class="projects">
+                    <section class="discoverProjects">
                         <?php foreach($quizzes as $quiz): ?>
                             <div id="<?= $quiz->getId(); ?>">
                                 <a href="quiz?quiz_id=<?= $quiz->getId(); ?>">PLAY</a>
@@ -65,8 +65,8 @@
 </body>
 
 <template id="quiz-template">
-    <div id ="">
-        <a href="quiz">PLAY</a>
+    <div >
+        <a href="quiz?quiz_id=<?= $quiz->getId(); ?>">PLAY</a>
         <img width="200px" height="200px" src="">
         <h2>title</h2>
         <p>description</p>
